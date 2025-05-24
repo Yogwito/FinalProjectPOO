@@ -20,8 +20,9 @@ import java.util.ArrayList;
  * Esta es una clase LectorArchivo que se utiliza para leer un archivo de texto y crear objetos del juego a partir de él.
  * El archivo de texto representa un mapa del calabozo y contiene información sobre la ubicación de los muros y los monstruos.
  *
- * @author Santiago Jiménez
- * @author Daniel Felipe Lopez
+ * @author Juan José Trujillo
+ * @author Juan Sebastian Arias
+ * @author Juan Jose Cardona Daza
  * @version 1.0.2
  */
 public class LectorArchivo {
