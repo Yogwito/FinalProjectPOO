@@ -8,8 +8,9 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Santiago Jiménez
- * @author Daniel Felipe López
+ * @author Juan Sebastian Arias
+ * @author Juan Jose Trujillo
+ * @author Juan Jose Cardona
  * @version 1.0.2
  */
 public class LevelCompleted extends javax.swing.JDialog {
