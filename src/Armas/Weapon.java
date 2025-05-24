@@ -18,8 +18,9 @@ import javax.swing.ImageIcon;
  * Esta es una clase Weapon que hereda de la clase Sprite e implementa la interfaz Drawable.
  * Representa un arma que posee un personaje en el juego.
  *
- * @author Santiago Jiménez
- * @author Daniel Felipe Lopez
+ * @author Juan José Trujillo
+ * @author Juan Sebastian Arias
+ * @author Juan José Cardona
  * @version 1.0.2
  */
 public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
