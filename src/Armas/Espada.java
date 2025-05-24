@@ -15,8 +15,9 @@ import javax.swing.ImageIcon;
  * Esta es una clase Espada que hereda de la clase Weapon.
  * Representa un arma específica (Espada) en el juego.
  *
- * @author Santiago Jiménez
- * @author Daniel Felipe Lopez
+ * @author Juan Jose Cardona Daza
+ * @author Juan Sebastian Arias
+ * @author Juan José Trujillo
  * @version 1.0.2
  */
 public class Espada extends Weapon{
