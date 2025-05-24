@@ -25,8 +25,9 @@ import javax.swing.JOptionPane;
 /**
  * Esta es una clase abstracta LivingBeing que hereda de la clase Sprite.
  * Representa un ser vivo en un juego, que puede ser un monstruo o un caballero.
- * @author Santiago Jiménez
- * @author Daniel Felipe Lopez
+ * @author Juan José Cardona Daza
+ * @author Juan Sebastian Arias
+ * @author Juan José Trujillo
  * @version 1.0.2
  */
 public abstract class LivingBeing extends Sprite{
