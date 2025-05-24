@@ -8,8 +8,9 @@ import javax.swing.ImageIcon;
 
 /**
  * Esta clase representa la selección de personajes en una interfaz de usuario de un juego.
- * @author Santiago Jiménez
- * @author Daniel Felipe Lopez
+ * @author Juan Sebastian Arias
+ * @author Juan Jose Trujillo
+ * @author Juan Jose Cardona
  * @version 1.0.2
  */
 public class CharacterSelection extends javax.swing.JFrame {
