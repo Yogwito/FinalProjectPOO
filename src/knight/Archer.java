@@ -1,7 +1,7 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+ *
 package knight;
 
 import Armas.Arrow;
@@ -17,8 +17,9 @@ import javax.swing.ImageIcon;
 /**
  * Esta es una clase Archer que hereda de la clase Knight.
  * Representa un personaje específico (Archer) en el juego.
- * @author Santiago Jiménez
- * @author Daniel Felipe Lopez
+ * @author Juan Jose Cardona Daza
+ * @author Juan Jose Trujillo
+ * @author Juan Sebastian Arias
  * @version 1.0.2
  */
 public class Archer extends Knight {
