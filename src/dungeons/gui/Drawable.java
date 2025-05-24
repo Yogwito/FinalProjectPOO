@@ -8,8 +8,9 @@ package dungeons.gui;
 /**
  * Esta interfaz define un objeto que puede ser dibujado en una interfaz gráfica.
  * Los objetos que implementan esta interfaz deben proporcionar una implementación para el método 'redraw()'.
- * @author Santiago Jiménez
- * @author Daniel Felipe Lopez
+ * @author Juan Sebastian Arias
+ * @author Juan Jose Trujillo
+ * @author Juan Jose Cardona
  * @version 1.0.2
  */
 public interface Drawable {

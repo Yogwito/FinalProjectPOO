@@ -12,8 +12,8 @@ import javax.swing.ImageIcon;
  * Esta es una clase Basilisk que hereda de la clase Monster.
  * Representa un monstruo específico (Basilisk) en el juego.
  * @author Juan José Trujillo
- * @author Juan José Cardona Daza
- * @author Juan Sebastian Arias 
+ * @author Juan Sebastian Arias
+ * @author Juan José Cardona
  * @version 1.0.2
  */
 public class Basilisk extends Monster{

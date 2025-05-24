@@ -8,8 +8,9 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Santiago Jiménez
- * @author Daniel Felipe López
+ * @author Juan Sebastian Arias
+ * @author Juan Jose Trujillo
+ * @author Juan Jose Cardona
  * @version 1.0.2
  */
 public class LevelCompleted extends javax.swing.JDialog {
@@ -219,7 +220,6 @@ public class LevelCompleted extends javax.swing.JDialog {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LevelCompleted.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */

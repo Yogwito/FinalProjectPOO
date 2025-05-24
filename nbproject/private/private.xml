@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/User/Documents/POO/FinalProjectPOO/src/Class/LectorArchivo.java</file>
             <file>file:/C:/Users/User/Documents/POO/FinalProjectPOO/src/Creature/Giant.java</file>
             <file>file:/C:/Users/User/Documents/POO/FinalProjectPOO/src/Creature/Monster.java</file>
@@ -18,6 +19,41 @@
             <file>file:/C:/Users/User/Documents/POO/FinalProjectPOO/src/Creature/Harpy.java</file>
             <file>file:/C:/Users/User/Documents/POO/FinalProjectPOO/src/Creature/Demon.java</file>
             <file>file:/C:/Users/User/Documents/POO/FinalProjectPOO/src/Creature/Unicorn.java</file>
+=======
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Knight/Knight.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Creature/Demon.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Class/LivingBeing.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Class/Dungeon.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Armas/Arrow.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/dungeons/gui/Upgrade.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Class/Wall.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Creature/Harpy.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/dungeons/gui/Levels.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/dungeons/gui/LevelCompleted.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Class/Assets.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Creature/Giant.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Creature/Basilisk.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Creature/MonsterThread.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Armas/Daga.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Creature/Monster.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/dungeons/gui/PlayerSound.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Armas/Espada.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Creature/Dragon.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Knight/Archer.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Class/Sprite.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Creature/Unicorn.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/dungeons/gui/Drawable.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/dungeons/gui/PlayerSoundPrincipal.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Armas/Weapon.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/dungeons/gui/Game.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/dungeons/gui/MenuPrincipal.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Armas/Escudo.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/dungeons/gui/GameOver.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Armas/Acha.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Class/Boundable.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Armas/Fireball.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Class/LectorArchivo.java</file>
+>>>>>>> 1484b6d85a0480dbd2592720346956eb2a214917
         </group>
     </open-files>
 </project-private>

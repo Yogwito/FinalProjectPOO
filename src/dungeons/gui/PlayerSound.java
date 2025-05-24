@@ -17,8 +17,9 @@ import javax.sound.sampled.AudioInputStream;
 /**
  * Maneja la reproducción de sonidos.
  *
- * @author Santiago Jiménez
- * @author Daniel Felipe López
+ * @author Juan Sebastian Arias
+ * @author Juan Jose Trujillo
+ * @author Juan Jose Cardona
  * @version 1.0.2
  */
 public abstract class PlayerSound{

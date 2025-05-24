@@ -11,8 +11,9 @@ import java.util.TimerTask;
  * La clase Game representa el estado del juego y se encarga de la lógica principal del juego.
  * Implementa la interfaz Drawable, lo que significa que puede ser dibujada en una interfaz gráfica.
  *
- * @author Santiago Jiménez
- * @author Daniel Felipe Lopez
+ * @author Juan Sebastian Arias
+ * @author Juan Jose Trujillo
+ * @author Juan Jose Cardona
  * @version 1.0.2
  */
 public class Game 

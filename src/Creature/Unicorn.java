@@ -11,9 +11,8 @@ import javax.swing.ImageIcon;
 /**
  * Esta es una clase Unicorn que hereda de la clase Monster.
  * Representa una creatura específica (Unicorn) en el juego.
- * @author Juan José Trujillo
- * @author Juan José Cardona Daza
- * @author Juan Sebastian Arias
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
  * @version 1.0.2
  */
 public class Unicorn extends Monster{

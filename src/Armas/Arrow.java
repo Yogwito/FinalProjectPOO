@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -17,9 +18,8 @@ import javax.swing.ImageIcon;
  * La clase Arrow representa una flecha en el juego. 
  * Esta clase extiende de la clase Weapon, lo que significa que hereda todas las propiedades y métodos de la clase Weapon.
  * Implementa el método redraw() de la interfaz Drawable.
- * @author Juan Jose Cardona Daza
- * @author Juan Jose Trujillo
- * @author Juan Sebastian Arias
+ * @author Santiago Jiménez
+ * @author Daniel Felipe López
  * @version 1.0.2
  */
 public class Arrow extends Weapon {
@@ -120,3 +120,7 @@ public class Arrow extends Weapon {
     }
 
     
+
+
+
+

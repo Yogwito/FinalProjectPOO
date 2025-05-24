@@ -11,9 +11,8 @@ import java.awt.Image;
  * Esta es una clase Assets que se utiliza para cargar y manejar imágenes de números para un score y cantidad de vida.
  * Carga imágenes de números en un array estático y proporciona un método para obtener la imagen de un número específico.
  *
- * @author Juan Jose Cardona Daza
- * @author Juan Jose Trujillo
- * @author Juan Sebastian Arias
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
  * @version 1.0.2
  */
 public class Assets {

@@ -10,9 +10,8 @@ import javax.swing.ImageIcon;
 /**
  * Esta es una clase Harpy que hereda de la clase Monster.
  * Representa un monstruo específico (Harpy) en el juego.
- * @author Juan José Trujillo
- * @author Juan José Cardona Daza
- * @author Juan Sebastian Arias
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
  * @version 1.0.2
  */
 public class Harpy extends Monster{

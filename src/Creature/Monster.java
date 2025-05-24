@@ -17,9 +17,8 @@ import javax.swing.ImageIcon;
 
 /**
 * Clase Monster.
- * @author Juan José Trujillo
- * @author Juan José Cardona Daza
- * @author Juan Sebastian Arias
+* @author Santiago Jiménez
+* @author Daniel Felipe López
 * @version 1.0.2
 */
  
