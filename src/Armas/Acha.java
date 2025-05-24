@@ -23,8 +23,9 @@ import javax.swing.ImageIcon;
  * Esta es una clase Acha que hereda de la clase Weapon.
  * Representa un arma específica (Acha) en el juego.
  *
- * @author Santiago Jiménez
- * @author Daniel Felipe Lopez
+ * @author Juan Jose Cardona Daza
+ * @author Juan Jose Trujillo
+ * @author Juan Sebastian Arias
  * @version 1.0.2
  */
 public class Acha extends Weapon{
