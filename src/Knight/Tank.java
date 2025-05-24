@@ -16,8 +16,9 @@ import javax.swing.ImageIcon;
 /**
  * Esta es una clase Tank que hereda de la clase Knight.
  * Representa un personaje específico (Tank) en un juego.
- * @author Santiago Jiménez
- * @author Daniel Felipe Lopez
+ * @author Juan Sebastian Arias
+ * @author Juan Jose Trujillo
+ * @author Juan Jose Cardona
  * @version 1.0.2
  */
 public class Tank extends Knight{
