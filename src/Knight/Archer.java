@@ -16,10 +16,12 @@ import javax.swing.ImageIcon;
 /**
  * Esta es una clase Archer que hereda de la clase Knight.
  * Representa un personaje específico (Archer) en el juego.
- * @author Santiago Jiménez
- * @author Daniel Felipe Lopez
+ * @author Juan Sebastian Arias
+ * @author Juan Jose Trujillo
+ * @author Juan Jose Cardona
  * @version 1.0.2
  */
+
 public class Archer extends Knight {
     /**
      * Una lista de flechas que el Archer puede lanzar.
