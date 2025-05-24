@@ -18,8 +18,9 @@ import javax.swing.ImageIcon;
  * La clase Arrow representa una flecha en el juego. 
  * Esta clase extiende de la clase Weapon, lo que significa que hereda todas las propiedades y métodos de la clase Weapon.
  * Implementa el método redraw() de la interfaz Drawable.
- * @author Santiago Jiménez
- * @author Daniel Felipe López
+ * @author Juan Jose Cardona Daza
+ * @author Juan Sebastian Arias
+ * @author Juan Jose Trujillo 
  * @version 1.0.2
  */
 public class Arrow extends Weapon {
