@@ -13,9 +13,8 @@ import javax.swing.ImageIcon;
  * Esta es una clase Escudo que hereda de la clase Weapon.
  * Representa un arma específica (Escudo) en el juego.
  *
- * @author Juan Jose Cardona Daza
- * @author Juan Jose Trujillo
- * @author Juan Sebastian Arias
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
  * @version 1.0.2
  */
 public class Escudo extends Weapon{
@@ -45,3 +44,4 @@ public class Escudo extends Weapon{
     }
     
 }
+

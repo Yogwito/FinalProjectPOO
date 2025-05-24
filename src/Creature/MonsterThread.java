@@ -10,9 +10,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * Esta es una clase MonsterThread que hereda de la clase Thread.
  * Se utiliza para manejar el movimiento y el ataque de un monstruo en un hilo separado.
- * @author Juan José Trujillo
- * @author Juan José Cardona Daza
- * @author Juan Sebastian Arias
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
  * @version 1.0.2
  */
 public class MonsterThread extends Thread {

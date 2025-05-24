@@ -11,9 +11,8 @@ import javax.swing.ImageIcon;
 /**
  * Esta es una clase Wall que hereda de la clase Sprite.
  * Representa un muro que se utiliza para demarcar el mapa del juego.
- * @author Juan Jose Cardona Daza
- * @author Juan Jose Trujillo
- * @author Juan Sebastian Arias
+ * @author Santiago Jiménez
+ * @author Daniel Felipe López
  * @version 1.0.2
  */
 public class Wall extends Sprite{

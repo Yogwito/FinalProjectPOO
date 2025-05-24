@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -17,9 +18,8 @@ import javax.swing.ImageIcon;
  * Esta es una clase Weapon que hereda de la clase Sprite e implementa la interfaz Drawable.
  * Representa un arma que posee un personaje en el juego.
  *
- * @author Juan Jose Cardona Daza
- * @author Juan Jose Trujillo
- * @author Juan Sebastian Arias
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
  * @version 1.0.2
  */
 public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
@@ -199,4 +199,7 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
     }
     
 }
+
+    
+
 

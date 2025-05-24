@@ -8,9 +8,8 @@ package Class;
  * Esta es una interfaz Boundable que se utiliza para verificar la validez de la posición de un sprite.
  * Proporciona un método para verificar si la posición de un sprite es válida o no.
  *
- * @author Juan Jose Cardona Daza
- * @author Juan Jose Trujillo
- * @author Juan Sebastian Arias
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
  * @version 1.0.2
  */
 public interface Boundable {

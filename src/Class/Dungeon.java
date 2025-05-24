@@ -28,9 +28,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 /**
  * Clase que representa el mapa del juego que contiene los muros y creaturas.
- * @author Juan Jose Cardona Daza
- * @author Juan Jose Trujillo
- * @author Juan Sebastian Arias
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
  * @version 1.0.1
  */
 public class Dungeon extends Sprite implements Drawable, Boundable{

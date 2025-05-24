@@ -13,9 +13,8 @@ import javax.swing.ImageIcon;
  * Esta es una clase Daga que hereda de la clase Weapon.
  * Representa un arma específica (Daga) en el juego.
  *
- * @author Juan Jose Cardona Daza
- * @author Juan Jose Trujillo
- * @author Juan Sebastian Arias
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
  * @version 1.0.2
  */
 public class Daga extends Weapon{
@@ -45,3 +44,4 @@ public class Daga extends Weapon{
     }
     
 }
+
