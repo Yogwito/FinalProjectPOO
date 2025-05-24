@@ -17,8 +17,9 @@ import javax.swing.ImageIcon;
  * Esta es una clase Fireball que hereda de la clase Weapon e implementa la interfaz Drawable.
  * Representa una bola de fuego que puede ser lanzada en el juego.
  *
- * @author Santiago Jiménez
- * @author Daniel Felipe Lopez
+ * @author Juan Jose Cardona Daza
+ * @author Juan Sebastian Arias
+ * @author Juan José Trujillo
  * @version 1.0.2
  */
 public class Fireball extends Weapon implements Drawable{
