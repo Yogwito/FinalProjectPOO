@@ -10,8 +10,9 @@ import javax.swing.ImageIcon;
 /**
  * Esta es una clase Giant que hereda de la clase Monster.
  * Representa un monstruo específico (Giant) en el juego.
- * @author Santiago Jiménez
- * @author Daniel Felipe Lopez
+ * @author Juan José Trujillo
+ * @author Juan Sebastian Arias
+ * @author Juan José Cardona
  * @version 1.0.2
  */
 public class Giant extends Monster{
