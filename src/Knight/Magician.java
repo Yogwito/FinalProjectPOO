@@ -18,8 +18,9 @@ import javax.swing.ImageIcon;
 /**
  * Clase Magician que extiende de Knight.
  * Esta clase representa un mago en el juego.
- * @author Santiago Jiménez
- * @author Daniel Felipe Lopez
+ * @author Juan Sebastian Arias
+ * @author Juan Jose Trujillo
+ * @author Juan Jose Cardona
  * @version 1.0.2
  */
 public class Magician extends Knight{
