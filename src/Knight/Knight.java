@@ -24,8 +24,9 @@ import javax.swing.JOptionPane;
 /**
  * Clase Knight que extiende de LivingBeing.
  * Esta clase representa un caballero en el juego.
- * @author Santiago Jiménez
- * @author Daniel Felipe Lopez
+ * @author Juan Sebastian Arias
+ * @author Juan Jose Trujillo
+ * @author Juan Jose Cardona
  * @version 1.0.2
  */
 public class Knight extends LivingBeing{
