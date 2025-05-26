@@ -17,6 +17,9 @@ import dungeons.gui.Upgrade;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -124,7 +127,6 @@ public abstract class LivingBeing extends Sprite{
        
    }
 
-    
     /**
     * Dibuja la imagen que representa el ser vivo en el objeto Graphics proporcionado.
     * @param g El objeto Graphics en el que se dibuja el ser vivo.
@@ -235,4 +237,18 @@ public abstract class LivingBeing extends Sprite{
    public int getY() {
        return super.getY(); 
    }
+   
+   public static int[] leerStats(String nombreArchivo) {
+    int[] stats = new int[6]; // ancho, alto, vida, daño, velocidad, rango
+    try (BufferedReader br = new BufferedReader(new FileReader("data/" + nombreArchivo))) {
+        for (int i = 0; i < stats.length; i++) {
+            stats[i] = Integer.parseInt(br.readLine());
+        }
+    } catch (IOException e) {
+        System.err.println("Error leyendo archivo: " + nombreArchivo);
+        e.printStackTrace();
+    }
+    return stats;
+}
+
 }

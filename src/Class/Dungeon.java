@@ -212,17 +212,29 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     
 
 
-public void actKnight(int key){
-        if(key == KeyEvent.VK_W |
-           key == KeyEvent.VK_S |
-           key == KeyEvent.VK_A | 
-           key == KeyEvent.VK_D |
-           key == KeyEvent.VK_SPACE)       
-        {
-            getArthur().actionHandle(key, getMuros(), getCreatures());
-            getDrawable().redraw(); // TODO
-        }
+public void actKnight(int key) {
+    if (key == KeyEvent.VK_ESCAPE) {
+        this.active = false;
+        RegistroPuntaje registro = new RegistroPuntaje();
+        registro.guardarPuntajeSiEsMayor(score);
+        new dungeons.gui.MenuPrincipal().setVisible(true);
     }
+
+    if (active && (
+        key == KeyEvent.VK_W ||
+        key == KeyEvent.VK_S ||
+        key == KeyEvent.VK_A ||
+        key == KeyEvent.VK_D ||
+        key == KeyEvent.VK_SPACE
+    )) {
+        getArthur().actionHandle(key, getMuros(), getCreatures());
+        getDrawable().redraw();
+    }
+    if (key == KeyEvent.VK_SPACE) {
+    System.out.println("SPACE PRESSED");
+}
+
+}
     
     public void verificarPerder(int llamado){
         if (arthur.getHealth() <= 0  && llamado == 1) {

@@ -102,17 +102,16 @@ public class Knight extends LivingBeing{
      * @param muros Lista de muros en el calabozo.
      * @param creatures Lista de criaturas en el calabozo.
      */
-    public void actionHandle(int key, ArrayList<Wall> muros, ArrayList<Monster> creatures){
-        if(key == KeyEvent.VK_W |
-           key == KeyEvent.VK_S |
-           key == KeyEvent.VK_A |
-           key == KeyEvent.VK_D){
-            move(key, muros, creatures);
-        }
-        else if(key == KeyEvent.VK_SPACE){
-            attackArthur(dungeon.getCreatures());
+    public void actionHandle(int keyCode, ArrayList<Wall> muros, ArrayList<Monster> creatures) {
+        switch (keyCode) {
+            case KeyEvent.VK_W -> moveUp(muros);
+            case KeyEvent.VK_S -> moveDown(muros);
+            case KeyEvent.VK_A -> moveLeft(muros);
+            case KeyEvent.VK_D -> moveRight(muros);
+            case KeyEvent.VK_SPACE -> attackArthur(creatures);
         }
     }
+
     
     /**
     * Método para mover al caballero en el juego.
@@ -258,5 +257,21 @@ public class Knight extends LivingBeing{
     public Dungeon getDungeon() {
         return dungeon;
     }
-    
+
+    private void moveUp(ArrayList<Wall> muros) {
+        move(KeyEvent.VK_W, muros, dungeon.getCreatures());
+    }
+
+    private void moveDown(ArrayList<Wall> muros) {
+        move(KeyEvent.VK_S, muros, dungeon.getCreatures());
+    }
+
+    private void moveLeft(ArrayList<Wall> muros) {
+        move(KeyEvent.VK_A, muros, dungeon.getCreatures());
+    }
+
+    private void moveRight(ArrayList<Wall> muros) {
+        move(KeyEvent.VK_D, muros, dungeon.getCreatures());
+    }
+
 }

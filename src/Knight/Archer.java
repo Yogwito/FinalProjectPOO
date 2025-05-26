@@ -36,10 +36,8 @@ public class Archer extends Knight {
      * @param dungeon  El calabozo en el que se encuentra el Archer.
      */
     public Archer(int x, int y, Dungeon dungeon) {
-        super(x, y, 23, 28, 100, 40, 350, 10, new ImageIcon("ArcherCharacter.png"), dungeon);
+        super(x, y, 40, 40, 100, 20, 5, 4, new ImageIcon("ArcherCharacter.png"), dungeon);
     }
-
-
     
     /**
      * Método para que el Archer ataque a una creature.

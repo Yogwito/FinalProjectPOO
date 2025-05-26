@@ -4,6 +4,7 @@
  */
 package dungeons.gui;
 
+import Class.RegistroPuntaje;
 import javax.swing.ImageIcon;
 
 /**
@@ -22,6 +23,10 @@ public class GameOver extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         jLabel2.setIcon(new ImageIcon("/Img/Gameover.png"));
+        
+        RegistroPuntaje registro = new RegistroPuntaje();
+        int puntajeFinal = 0;
+        registro.guardarPuntajeSiEsMayor(puntajeFinal);
     }
 
     /**

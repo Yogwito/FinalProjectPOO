@@ -16,9 +16,7 @@ import java.util.TimerTask;
  * @author Juan Jose Cardona
  * @version 1.0.2
  */
-public class Game 
-        extends javax.swing.JFrame 
-        implements Drawable {
+public class Game extends javax.swing.JFrame implements Drawable {
     /**
      * El mapa del juego
      */
