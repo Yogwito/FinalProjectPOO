@@ -136,6 +136,7 @@ public class LectorArchivo implements Reader {
     }
     return monstruos;
     }
+    
     @Override
     public ArrayList<String> read(String path) {
         ArrayList<String> lines = new ArrayList<>();
