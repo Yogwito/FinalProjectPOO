@@ -11,5 +11,5 @@ package interfaces;
 import java.util.ArrayList;
 
 public interface Writer {
-    boolean guardar(String filePath, ArrayList<String> lines);
+    void guardar(String nombreJugador, int puntaje);
 }
