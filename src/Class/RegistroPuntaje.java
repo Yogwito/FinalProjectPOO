@@ -1,15 +1,29 @@
 
 package Class;
 
+import interfaces.Writer;
 import java.io.*;
 
-public class RegistroPuntaje {
+public class RegistroPuntaje implements Writer{
 
     private static final String ARCHIVO = "puntaje_maximo.txt";
 
     /**
      * Guarda el puntaje solo si es mayor al ya registrado.
      */
+    @Override
+    public void guardar(String nombreJugador, int nuevoPuntaje) {
+        int puntajeActual = leerPuntajeActual();
+
+        if (nuevoPuntaje > puntajeActual) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(ARCHIVO))) {
+                writer.write(String.valueOf(nuevoPuntaje));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void guardarPuntajeSiEsMayor(int nuevoPuntaje) {
         int puntajeActual = leerPuntajeActual();
 

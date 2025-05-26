@@ -15,6 +15,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import interfaces.Reader;
 
 /**
  * Esta es una clase LectorArchivo que se utiliza para leer un archivo de texto y crear objetos del juego a partir de él.
@@ -25,7 +26,7 @@ import java.util.ArrayList;
  * @author Juan Jose Cardona Daza
  * @version 1.0.2
  */
-public class LectorArchivo {
+public class LectorArchivo implements Reader {
 
     /**
      * La ruta del archivo a leer.
@@ -134,6 +135,20 @@ public class LectorArchivo {
         e.printStackTrace();
     }
     return monstruos;
+    }
+    @Override
+    public ArrayList<String> read(String path) {
+        ArrayList<String> lines = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                lines.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+    }
+        return lines;
 }
+
 
 }
