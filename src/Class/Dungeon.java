@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import java.util.Timer;
 import java.util.TimerTask;
+import dungeons.gui.MenuPrincipal;
+
 /**
  * Clase que representa el mapa del juego que contiene los muros y creaturas.
  * @author Juan José Cardona Daza
@@ -212,29 +214,42 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     
 
 
-public void actKnight(int key) {
-    if (key == KeyEvent.VK_ESCAPE) {
-        this.active = false;
-        RegistroPuntaje registro = new RegistroPuntaje();
-        registro.guardarPuntajeSiEsMayor(score);
-        new dungeons.gui.MenuPrincipal().setVisible(true);
-    }
+    public void actKnight(int key) {
+        if (key == KeyEvent.VK_ESCAPE|| key == KeyEvent.VK_Q) {
+            this.active = false;
+            RegistroPuntaje registro = new RegistroPuntaje();
+            registro.guardarPuntajeSiEsMayor(score);
+            new dungeons.gui.MenuPrincipal().setVisible(true);
+        }
 
-    if (active && (
-        key == KeyEvent.VK_W ||
-        key == KeyEvent.VK_S ||
-        key == KeyEvent.VK_A ||
-        key == KeyEvent.VK_D ||
-        key == KeyEvent.VK_SPACE
-    )) {
-        getArthur().actionHandle(key, getMuros(), getCreatures());
-        getDrawable().redraw();
-    }
-    if (key == KeyEvent.VK_SPACE) {
-    System.out.println("SPACE PRESSED");
-}
+        if (active && (
+            key == KeyEvent.VK_W ||
+            key == KeyEvent.VK_S ||
+            key == KeyEvent.VK_A ||
+            key == KeyEvent.VK_D ||
+            key == KeyEvent.VK_SPACE
+        )) {
+            getArthur().actionHandle(key, getMuros(), getCreatures());
+            getDrawable().redraw();
+        }
 
-}
+        if (key == KeyEvent.VK_SPACE) {
+            System.out.println("SPACE PRESSED");
+            
+        if (key == KeyEvent.VK_Q) {
+            this.active = false; // detener el juego
+
+            // Guardar puntaje
+            RegistroPuntaje registro = new RegistroPuntaje();
+            registro.guardarPuntajeSiEsMayor(score);
+
+            // Volver al menú
+            javax.swing.SwingUtilities.invokeLater(() -> {
+                new dungeons.gui.MenuPrincipal().setVisible(true);
+            });
+            }
+        }
+    }
     
     public void verificarPerder(int llamado){
         if (arthur.getHealth() <= 0  && llamado == 1) {
