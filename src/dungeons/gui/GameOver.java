@@ -4,6 +4,7 @@
  */
 package dungeons.gui;
 
+import Class.Dungeon;
 import Class.RegistroPuntaje;
 import javax.swing.ImageIcon;
 
@@ -15,14 +16,19 @@ import javax.swing.ImageIcon;
  * @version 1.0.2
  */
 public class GameOver extends javax.swing.JDialog {
+    
+    private String nivel;
+    private String tipo;
 
     /**
      * Creates new form GameOver
      */
-    public GameOver(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public GameOver(java.awt.Frame parent, boolean modal,String nivel, 
+            String tipo) {
+        this.nivel = nivel;
+        this.tipo = tipo;
         initComponents();
-        jLabel2.setIcon(new ImageIcon("/Img/Gameover.png"));
+        jLabel2.setIcon(new ImageIcon(getClass().getResource("/Img/Gameover.png")));
         
         RegistroPuntaje registro = new RegistroPuntaje();
         int puntajeFinal = 0;
@@ -40,7 +46,7 @@ public class GameOver extends javax.swing.JDialog {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jButtonReintentar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -49,7 +55,12 @@ public class GameOver extends javax.swing.JDialog {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Gameover.png"))); // NOI18N
 
-        jTextField1.setText("jTextField1");
+        jButtonReintentar.setText("Reintentar");
+        jButtonReintentar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReintentarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -57,17 +68,17 @@ public class GameOver extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113)
+                .addComponent(jButtonReintentar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonReintentar)
+                .addGap(0, 23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -83,6 +94,13 @@ public class GameOver extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonReintentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReintentarActionPerformed
+        // TODO add your handling code here:
+        Game nuevaPartida = new Game(new Dungeon(0, 0, 800, 800, tipo, nivel));
+        nuevaPartida.setVisible(true);
+        dispose();   
+    }//GEN-LAST:event_jButtonReintentarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,7 +132,7 @@ public class GameOver extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GameOver dialog = new GameOver(new javax.swing.JFrame(), true);
+                GameOver dialog = new GameOver(new javax.swing.JFrame(), true, "nivel1", "facil");
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -127,8 +145,8 @@ public class GameOver extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonReintentar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
