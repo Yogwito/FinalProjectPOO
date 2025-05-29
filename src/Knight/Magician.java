@@ -37,7 +37,7 @@ public class Magician extends Knight{
      */
 
     public Magician(int x, int y, Dungeon dungeon) {
-        super(x, y, 16, 29, 80, 80, 250, 5, new ImageIcon("MagicianCharacter.png"), dungeon);
+        super(x, y, 16, 29, 80, 40, 100, 5, new ImageIcon("MagicianCharacter.png"), dungeon);
     }
     
     /**
