@@ -4,6 +4,7 @@
  */
 package Knight;
 
+import dungeons.gui.GameOver;
 import Class.Boundable;
 import Class.Dungeon;
 import Armas.Espada;
@@ -161,6 +162,7 @@ public class Knight extends LivingBeing{
                 this.setX(xOriginal);
                 this.setY(yOriginal);
                 
+                this.recibirDano(monster.getDamage());
                 return false;
             }
             else if (this.checkCollision(monster) && monster instanceof Unicorn){
@@ -238,17 +240,17 @@ public class Knight extends LivingBeing{
     * Obtiene la dirección de ataque del caballero.
     * @return Dirección de ataque del caballero.
     */
-   public int getAtaqueDireccion() {
+    public int getAtaqueDireccion() {
        return ataqueDireccion;
-   }
+    }
 
    /**
     * Obtiene la Arma del caballero.
     * @return Arma del caballero.
     */
-   public Weapon getSword() {
+    public Weapon getSword() {
        return sword;
-   }
+    }
 
     /**
     * Obtiene el calabozo en el que se encuentra el caballero.
@@ -273,5 +275,16 @@ public class Knight extends LivingBeing{
     private void moveRight(ArrayList<Wall> muros) {
         move(KeyEvent.VK_D, muros, dungeon.getCreatures());
     }
-
+    public void recibirDano(int cantidad) {
+        this.health -= cantidad;
+        if (this.health <= 0) {
+            this.health = 0;
+            morir();
+        }
+    }
+    public void morir() {
+        dungeon.setActive(false);
+        GameOver gameOver = new GameOver(null, true, dungeon.getNivel(), dungeon.getTipo());
+        gameOver.setVisible(true);
+    }
 }

@@ -47,6 +47,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private int score;
     private boolean active;
     private int llamado;
+    private String tipo;
     
 
     /**
@@ -58,17 +59,26 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
      * @param type tipo de caballero que sera utilizado.
      * @param nivel nivel o mapa que sera jugado.
      */
-    public Dungeon(int x, int y, int width, int height, String type, String nivel) {
-        super(x, y, width, height, new Color(186, 222, 248  ));
-        arthur = createKnight(40, 40, type, this);
+    
+    public Dungeon(int x, int y, int width, int height, String type, String nivel, String tipo) {
+        super(x, y, width, height, new Color(186, 222, 248));
+        this.tipo = tipo;
+        this.nivel = nivel;
+        this.score = 1200;
+        this.active = true;
+        this.llamado = 0;
+
         lector = new LectorArchivo(nivel);
         muros = new ArrayList<>();
-        creatures = new ArrayList<>(); 
-        score = 1200;
-        mapearDungeon();
-        active = true;
-        llamado = 0;
+        creatures = new ArrayList<>();
+
+        arthur = createKnight(40, 40, type, this);
         arthur.setDrawable(this);
+
+        mapearDungeon();
+    }
+    public Dungeon(int x, int y, int width, int height, String tipo, String nivel) {
+        this(x, y, width, height, tipo, nivel, tipo); // usa 'tipo' para ambos
     }
 
     /**
@@ -252,15 +262,14 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     }
     
     public void verificarPerder(int llamado){
-        if (arthur.getHealth() <= 0  && llamado == 1) {
-            GameOver go = new GameOver(null, true);
-            go.setVisible(true);
+        if (arthur.getHealth() <= 0 && llamado == 1) {
             this.active = false;
             this.score = 0;
-            
-            
+            GameOver go = new GameOver(null, true, this.nivel, this.tipo);
+            go.setVisible(true);
         }
     }
+
     
     public void verificarVictoria(int llamado){
         if(this.creatures.isEmpty() && llamado == 1){
@@ -379,5 +388,14 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     public boolean isActive() {
         return active;
     }
-   
+    public String getNivel() {
+        return this.nivel;
+    }
+
+    public String getTipo() {
+        return this.tipo;
+    }
+    public void setActive(boolean active) {
+        this.active = active;
+    }   
 }
