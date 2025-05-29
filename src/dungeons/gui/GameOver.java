@@ -5,7 +5,7 @@
 package dungeons.gui;
 
 import Class.Dungeon;
-import Class.RegistroPuntaje;
+import Class.RegistroPartida;
 import javax.swing.ImageIcon;
 
 /**
@@ -19,20 +19,22 @@ public class GameOver extends javax.swing.JDialog {
     
     private String nivel;
     private String tipo;
+    private String nombreJugador;
 
     /**
      * Creates new form GameOver
      */
     public GameOver(java.awt.Frame parent, boolean modal,String nivel, 
-            String tipo) {
+            String tipo, String nombreJugador) {
         this.nivel = nivel;
         this.tipo = tipo;
+        this.nombreJugador = nombreJugador;
         initComponents();
         jLabel2.setIcon(new ImageIcon(getClass().getResource("/Img/Gameover.png")));
         
-        RegistroPuntaje registro = new RegistroPuntaje();
+        RegistroPartida registro = new RegistroPartida();
         int puntajeFinal = 0;
-        registro.guardarPuntajeSiEsMayor(puntajeFinal);
+        registro.guardar(nombreJugador, puntajeFinal);
     }
 
     /**
@@ -132,7 +134,7 @@ public class GameOver extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GameOver dialog = new GameOver(new javax.swing.JFrame(), true, "nivel1", "facil");
+                GameOver dialog = new GameOver(new javax.swing.JFrame(), true, "nivel1", "facil", "JugadorPrueba");
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

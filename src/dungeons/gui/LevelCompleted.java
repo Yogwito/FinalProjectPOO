@@ -4,7 +4,7 @@
  */
 package dungeons.gui;
 
-import Class.RegistroPuntaje;
+import Class.RegistroPartida;
 import javax.swing.ImageIcon;
 
 /**
@@ -192,8 +192,9 @@ public class LevelCompleted extends javax.swing.JDialog {
         String nombre = jtNombre.getText();
         int puntaje = Integer.parseInt(jTextField1.getText());
 
-        RegistroPuntaje registro = new RegistroPuntaje();
-        registro.guardarPuntajeSiEsMayor(puntaje);
+        RegistroPartida registro = new RegistroPartida();
+        registro.guardar(nombre, puntaje);
+
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreActionPerformed

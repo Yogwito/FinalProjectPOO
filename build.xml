@@ -70,4 +70,15 @@
     nbproject/build-impl.xml file. 
 
     -->
+    
+    <target name="-post-init">
+        <property name="javac.source" value="21"/>
+        <property name="javac.target" value="21"/>
+        <property name="javac.compilerargs" value="--enable-preview"/>
+    </target>
+
+    <target name="-post-jar">
+        <property name="run.jvmargs" value="--enable-preview"/>
+    </target>
 </project>
+

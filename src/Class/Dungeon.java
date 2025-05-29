@@ -48,6 +48,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private boolean active;
     private int llamado;
     private String tipo;
+    private String nombreJugador;
     
 
     /**
@@ -67,6 +68,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         this.score = 1200;
         this.active = true;
         this.llamado = 0;
+        this.nombreJugador =  nombreJugador;
 
         lector = new LectorArchivo(nivel);
         muros = new ArrayList<>();
@@ -87,6 +89,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
      */
     public void setDrawable(Drawable drawable) {
         this.drawable = drawable;
+    }
+    
+    public String getNombreJugador() {
+        return nombreJugador;
     }
     
     private void mapearDungeon() {
@@ -225,47 +231,29 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
 
 
     public void actKnight(int key) {
-        if (key == KeyEvent.VK_ESCAPE|| key == KeyEvent.VK_Q) {
-            this.active = false;
-            RegistroPuntaje registro = new RegistroPuntaje();
-            registro.guardarPuntajeSiEsMayor(score);
-            new dungeons.gui.MenuPrincipal().setVisible(true);
-        }
-
-        if (active && (
-            key == KeyEvent.VK_W ||
-            key == KeyEvent.VK_S ||
-            key == KeyEvent.VK_A ||
-            key == KeyEvent.VK_D ||
-            key == KeyEvent.VK_SPACE
-        )) {
-            getArthur().actionHandle(key, getMuros(), getCreatures());
-            getDrawable().redraw();
-        }
-
-        if (key == KeyEvent.VK_SPACE) {
-            System.out.println("SPACE PRESSED");
-            
-        if (key == KeyEvent.VK_Q) {
-            this.active = false; // detener el juego
-
-            // Guardar puntaje
-            RegistroPuntaje registro = new RegistroPuntaje();
-            registro.guardarPuntajeSiEsMayor(score);
-
-            // Volver al menú
-            javax.swing.SwingUtilities.invokeLater(() -> {
-                new dungeons.gui.MenuPrincipal().setVisible(true);
-            });
-            }
-        }
+    if (key == KeyEvent.VK_ESCAPE || key == KeyEvent.VK_Q) {
+        this.active = false;
+        RegistroPartida registro = new RegistroPartida();
+        registro.guardar(nombreJugador, score);  // Usa el nombre real del jugador
+        new MenuPrincipal().setVisible(true);
     }
-    
+
+    if (active && (
+        key == KeyEvent.VK_W ||
+        key == KeyEvent.VK_S ||
+        key == KeyEvent.VK_A ||
+        key == KeyEvent.VK_D ||
+        key == KeyEvent.VK_SPACE
+    )) {
+        arthur.actionHandle(key, muros, creatures);
+        drawable.redraw();
+    }
+}    
     public void verificarPerder(int llamado){
         if (arthur.getHealth() <= 0 && llamado == 1) {
             this.active = false;
             this.score = 0;
-            GameOver go = new GameOver(null, true, this.nivel, this.tipo);
+            GameOver go = new GameOver(null, true, nivel, arthur.getClass().getSimpleName(), nombreJugador);
             go.setVisible(true);
         }
     }

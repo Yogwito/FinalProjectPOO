@@ -284,7 +284,7 @@ public class Knight extends LivingBeing{
     }
     public void morir() {
         dungeon.setActive(false);
-        GameOver gameOver = new GameOver(null, true, dungeon.getNivel(), dungeon.getTipo());
+        GameOver gameOver = new GameOver(null, true, dungeon.getNivel(), dungeon.getTipo(), dungeon.getNombreJugador());
         gameOver.setVisible(true);
     }
 }
