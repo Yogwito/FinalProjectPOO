@@ -315,6 +315,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     public void eliminarCreature(int index){
         this.getCreatures().remove(index);
     }
+    
+    public void eliminarCreature(LivingBeing creature) {
+    creatures.remove(creature);
+}
     /**
      * @return the arthur
      */

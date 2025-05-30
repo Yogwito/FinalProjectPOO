@@ -36,7 +36,7 @@ public class Unicorn extends Monster{
      * @param dungeon  El calabozo en el que se encuentra el Unicorn.
      */
     public Unicorn(int x, int y, Dungeon dungeon) {
-        super(x, y, WIDTH, HEIGHT, 500, 80, 12, 0, new ImageIcon("Unicorn.png"), dungeon);
+        super(x, y, WIDTH, HEIGHT, 1000000, 80, 12, 0, new ImageIcon("Unicorn.png"), dungeon);
     }
 
     /**
