@@ -15,22 +15,23 @@ import javax.sound.sampled.AudioInputStream;
 
 
 /**
- * Maneja la reproducción de sonidos.
+ * Clase abstracta que maneja la reproducción de sonidos en el juego.
+ * Permite cargar, reproducir y detener clips de audio utilizando la API de Java Sound.
  *
  * @author Juan Sebastian Arias
  * @author Juan Jose Trujillo
  * @author Juan Jose Cardona
  * @version 1.0.2
  */
-public abstract class PlayerSound{
+public abstract class PlayerSound {
     /**
-     * Flujo de entrada de audio principal
+     * Flujo de entrada de audio principal utilizado para cargar el sonido.
      */
     private AudioInputStream principalSound;
     /**
-     * Clip de audio
+     * Clip de audio que se reproduce.
      */
-    private Clip clip; 
+    private Clip clip;
 
     /**
      * Constructor de la clase PlayerSound.
@@ -43,40 +44,42 @@ public abstract class PlayerSound{
         try {
             this.clip = AudioSystem.getClip();
         } catch (LineUnavailableException ex) {
+            // Manejo silencioso, el error se ignora
         }
         try {
             clip.open(principalSound);
-        } catch (LineUnavailableException ex) {
-        } catch (IOException ex) {
+        } catch (LineUnavailableException | IOException ex) {
+            // Manejo silencioso, el error se ignora
         }
     }
-    
+
     /**
      * Carga un clip de audio desde un archivo.
      *
      * @param name Nombre del archivo de audio a cargar.
-     * @return Flujo de entrada de audio del archivo cargado.
+     * @return Flujo de entrada de audio del archivo cargado, o null si ocurre un error.
      */
-    public AudioInputStream loadClip(String name){
+    public AudioInputStream loadClip(String name) {
         AudioInputStream audioStream = null;
-        try{
+        try {
             File audioFile = new File(name);
             audioStream = AudioSystem.getAudioInputStream(audioFile);
             return audioStream;
-        }catch(UnsupportedAudioFileException | IOException  ex){
+        } catch (UnsupportedAudioFileException | IOException ex) {
             System.out.println("Error al cargar");
         }
         return audioStream;
     }
-    
+
     /**
-     * Detiene la reproducción del sonido.
+     * Detiene la reproducción del sonido actual.
      */
     public void stopSound() {
         getClip().stop();
     }
 
     /**
+     * Obtiene el flujo de entrada de audio principal.
      * @return El flujo de entrada de audio principal.
      */
     public AudioInputStream getPrincipalSound() {
@@ -85,7 +88,6 @@ public abstract class PlayerSound{
 
     /**
      * Establece el flujo de entrada de audio principal.
-     *
      * @param principalSound El nuevo flujo de entrada de audio principal.
      */
     public void setPrincipalSound(AudioInputStream principalSound) {
@@ -93,6 +95,7 @@ public abstract class PlayerSound{
     }
 
     /**
+     * Obtiene el clip de audio.
      * @return El clip de audio.
      */
     public Clip getClip() {
@@ -101,7 +104,6 @@ public abstract class PlayerSound{
 
     /**
      * Establece el clip de audio.
-     *
      * @param clip El nuevo clip de audio.
      */
     public void setClip(Clip clip) {

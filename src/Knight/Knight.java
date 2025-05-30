@@ -23,59 +23,57 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
- * Clase Knight que extiende de LivingBeing.
- * Esta clase representa un caballero en el juego.
+ * Clase Knight que representa un caballero en el juego.
+ * Hereda de LivingBeing y proporciona métodos para movimiento, ataque y gestión de atributos del caballero.
+ * Gestiona la interacción con el entorno, criaturas y upgrades/downgrades.
+ *
  * @author Juan Sebastian Arias
  * @author Juan Jose Trujillo
  * @author Juan Jose Cardona
  * @version 1.0.2
  */
 public class Knight extends LivingBeing{
-    
     /**
      * Salud del caballero.
      */
     private int health;
-
     /**
      * Daño que puede infligir el caballero.
      */
     private int damage;
-    
+    /**
+     * Dirección de movimiento del caballero (0: arriba, 1: abajo, 2: izquierda, 3: derecha).
+     */
     int direccion = 0;
-
     /**
      * Rango de ataque del caballero.
      */
     private int range;
-
     /**
      * Velocidad de movimiento del caballero.
      */
     private int speed;
-
     /**
      * Imagen que representa al caballero.
      */
     private ImageIcon image;
-
     /**
      * Calabozo en el que se encuentra el caballero.
      */
     Dungeon dungeon;
-
     /**
      * Dirección de ataque del caballero.
      */
     private int ataqueDireccion;
-
     /**
      * Arma del caballero.
      */
     Weapon sword;
-    
+
     /**
      * Constructor de la clase Knight.
+     * Inicializa los atributos del caballero con los valores proporcionados.
+     *
      * @param x Coordenada x del caballero en el tablero.
      * @param y Coordenada y del caballero en el tablero.
      * @param width Ancho del caballero.
@@ -101,7 +99,7 @@ public class Knight extends LivingBeing{
     
     /**
      * Método para manejar las acciones del caballero.
-     * @param key Tecla presionada.
+     * @param keyCode Código de la tecla presionada.
      * @param muros Lista de muros en el calabozo.
      * @param creatures Lista de criaturas en el calabozo.
      */
@@ -115,14 +113,13 @@ public class Knight extends LivingBeing{
         }
     }
 
-    
     /**
-    * Método para mover al caballero en el juego.
-    * @param key Tecla presionada.
-    * @param muros Lista de muros en el calabozo.
-    * @param creatures Lista de criaturas en el calabozo.
-    * @return Verdadero si el caballero puede moverse, falso en caso contrario.
-    */
+     * Mueve al caballero en el juego según la tecla presionada.
+     * @param key Tecla presionada.
+     * @param muros Lista de muros en el calabozo.
+     * @param creatures Lista de criaturas en el calabozo.
+     * @return Verdadero si el caballero puede moverse, falso en caso contrario.
+     */
     public boolean move(int key, ArrayList<Wall> muros, ArrayList<Monster> creatures){
         int xOriginal = x;
         int yOriginal = y;
@@ -217,19 +214,19 @@ public class Knight extends LivingBeing{
 }
     
     /**
-    * Método para que el caballero ataque a las criaturas.
-    * @param creatures Lista de criaturas a las que el caballero puede atacar.
-    */
+     * Método para que el caballero ataque a las criaturas.
+     * @param creatures Lista de criaturas a las que el caballero puede atacar.
+     */
     public void attackArthur(ArrayList<Monster> creatures){
         
     }
     
     /**
-    * Método para verificar si el caballero ha atacado a alguna criatura con su arma.
-    * @param creatures Lista de criaturas a verificar.
-    * @param arma Espada del caballero.
-    * @return 0 (este método aún no está implementado).
-    */
+     * Verifica si el caballero ha atacado a alguna criatura con su arma.
+     * @param creatures Lista de criaturas a verificar.
+     * @param arma Arma del caballero.
+     * @return 1 si hubo colisión y daño, 0 si no hubo colisión.
+     */
     public int verificarAtaque(ArrayList<Monster> creatures, Weapon arma) {
     for (Monster m : creatures) {
         if (arma.checkCollision(m)) {
@@ -241,44 +238,67 @@ public class Knight extends LivingBeing{
 }
 
     /**
-    * Obtiene la dirección de ataque del caballero.
-    * @return Dirección de ataque del caballero.
-    */
+     * Obtiene la dirección de ataque del caballero.
+     * @return Dirección de ataque del caballero.
+     */
     public int getAtaqueDireccion() {
-       return ataqueDireccion;
-    }
-
-   /**
-    * Obtiene la Arma del caballero.
-    * @return Arma del caballero.
-    */
-    public Weapon getSword() {
-       return sword;
+        return ataqueDireccion;
     }
 
     /**
-    * Obtiene el calabozo en el que se encuentra el caballero.
-    * @return Calabozo en el que se encuentra el caballero.
-    */
+     * Obtiene el arma del caballero.
+     * @return Arma del caballero.
+     */
+    public Weapon getSword() {
+        return sword;
+    }
+
+    /**
+     * Obtiene el calabozo en el que se encuentra el caballero.
+     * @return Calabozo en el que se encuentra el caballero.
+     */
     public Dungeon getDungeon() {
         return dungeon;
     }
 
+    /**
+     * Mueve al caballero una casilla hacia arriba si es posible.
+     * Llama al método move con la tecla correspondiente y verifica colisiones con muros y criaturas.
+     * @param muros Lista de muros presentes en el calabozo.
+     */
     private void moveUp(ArrayList<Wall> muros) {
         move(KeyEvent.VK_W, muros, dungeon.getCreatures());
     }
 
+    /**
+     * Mueve al caballero una casilla hacia abajo si es posible.
+     * Llama al método move con la tecla correspondiente y verifica colisiones con muros y criaturas.
+     * @param muros Lista de muros presentes en el calabozo.
+     */
     private void moveDown(ArrayList<Wall> muros) {
         move(KeyEvent.VK_S, muros, dungeon.getCreatures());
     }
 
+    /**
+     * Mueve al caballero una casilla hacia la izquierda si es posible.
+     * Llama al método move con la tecla correspondiente y verifica colisiones con muros y criaturas.
+     * @param muros Lista de muros presentes en el calabozo.
+     */
     private void moveLeft(ArrayList<Wall> muros) {
         move(KeyEvent.VK_A, muros, dungeon.getCreatures());
     }
 
+    /**
+     * Mueve al caballero una casilla hacia la derecha si es posible.
+     * Llama al método move con la tecla correspondiente y verifica colisiones con muros y criaturas.
+     * @param muros Lista de muros presentes en el calabozo.
+     */
     private void moveRight(ArrayList<Wall> muros) {
         move(KeyEvent.VK_D, muros, dungeon.getCreatures());
     }
+    /**
+     * Método llamado cuando el caballero muere. Desactiva el dungeon y muestra la pantalla de Game Over.
+     */
     @Override
     public void morir() {
         dungeon.setActive(false);
@@ -286,7 +306,11 @@ public class Knight extends LivingBeing{
         gameOver.setVisible(true);
     }
 
+    /**
+     * Obtiene la dirección de movimiento del caballero.
+     * @return Dirección de movimiento del caballero.
+     */
     public int getDireccion() {
         return this.direccion;
-}
+    }
 }

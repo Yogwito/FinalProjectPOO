@@ -1,4 +1,3 @@
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -24,42 +23,41 @@ import javax.swing.ImageIcon;
  * @author Juan José Cardona
  * @version 1.0.2
  */
-public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
+public abstract class Weapon extends Sprite implements dungeons.gui.Drawable {
     /**
-    * Un entero que almacena la dirección de movimiento del arma.
-    */
-   private int direction;
+     * Un entero que almacena la dirección de movimiento del arma.
+     */
+    private int direction;
 
-   /**
-    * Un booleano que indica si el arma ha expirado o no.
-    */
-   private boolean expired;
+    /**
+     * Un booleano que indica si el arma ha expirado o no.
+     */
+    private boolean expired;
 
-   /**
-    * Una referencia al calabozo (Dungeon) en el que se encuentra el arma.
-    */
-   private Dungeon dungeon;
+    /**
+     * Una referencia al calabozo (Dungeon) en el que se encuentra el arma.
+     */
+    private Dungeon dungeon;
 
-   /**
-    * Un entero que representa el daño que puede infligir el arma.
-    */
-   private int damage;
+    /**
+     * Un entero que representa el daño que puede infligir el arma.
+     */
+    private int damage;
 
-   /**
-    * Una referencia al ser vivo (LivingBeing) que dispara el arma.
-    */
-   private LivingBeing shooter;
+    /**
+     * Una referencia al ser vivo (LivingBeing) que dispara el arma.
+     */
+    private LivingBeing shooter;
 
-   /**
-    * Una cadena que representa la ruta del archivo de imagen para el arma.
-    */
-   private String path;
+    /**
+     * Una cadena que representa la ruta del archivo de imagen para el arma.
+     */
+    private String path;
 
-   /**
-    * Un booleano que indica si el arma está en rango  de ataque o no.
-    */
-   private boolean inRange;
-
+    /**
+     * Un booleano que indica si el arma está en rango  de ataque o no.
+     */
+    private boolean inRange;
 
     /**
      * Constructor de la clase Weapon.
@@ -87,7 +85,7 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
     public Weapon() {
         super(0, 0, 0, 0, null);
     }
-    
+
     /**
      * Establece la dirección de movimiento del arma.
      *
@@ -106,7 +104,7 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
     public void draw(Graphics g) {
         ImageIcon image = new ImageIcon(getPath());
         if (image != null) {
-            g.drawImage(image.getImage(), x, y,null);
+            g.drawImage(image.getImage(), x, y, null);
         } else {
             g.setColor(color);
             g.fillRect(x, y, width, height);
@@ -124,7 +122,6 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
         for (Wall wall : dungeon.getMuros()) {
             if (wall.checkCollision(this)) {
                 setExpired(true);
-                
                 break;
             }
         }
@@ -144,7 +141,7 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
      * @return true si el arma ha expirado, false en caso contrario.
      */
     public boolean isExpired() {
-    return expired;
+        return expired;
     }
 
     /**
@@ -173,7 +170,7 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
     public String getPath() {
         return path;
     }
-    
+
     /**
      * Comprueba si el arma está en rango.
      *
@@ -185,12 +182,11 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
 
     /**
      * Método para mover el arma.
-     * Este método aún no está implementado.
      *
      * @param i El parámetro de movimiento.
      */
     public void move(int i) {
-        
+        // Método a implementar en subclases si es necesario
     }
 
     /**
@@ -199,9 +195,8 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
     public int getDirection() {
         return direction;
     }
-    
 }
 
-    
+
 
 

@@ -14,35 +14,38 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- * Esta es una clase Archer que hereda de la clase Knight.
- * Representa un personaje específico (Archer) en el juego.
+ * Clase Archer que representa un caballero arquero en el juego.
+ * Hereda de Knight y permite lanzar flechas (Arrow) como ataque a las criaturas.
+ * Gestiona la creación, movimiento y dibujo de las flechas disparadas.
+ *
  * @author Juan Sebastian Arias
  * @author Juan Jose Trujillo
  * @author Juan Jose Cardona
  * @version 1.0.2
  */
-
 public class Archer extends Knight {
     /**
-     * Una lista de flechas que el Archer puede lanzar.
+     * Lista de flechas que el Archer puede lanzar.
      */
     private ArrayList<Arrow> arrows = new ArrayList<>();
 
     /**
      * Constructor de la clase Archer.
-     * Inicializa las propiedades de la clase con los valores proporcionados.
-     * @param x  La coordenada x del Archer.
-     * @param y  La coordenada y del Archer.
-     * @param dungeon  El calabozo en el que se encuentra el Archer.
+     * Inicializa las propiedades del Archer con los valores proporcionados.
+     *
+     * @param x Coordenada x del Archer.
+     * @param y Coordenada y del Archer.
+     * @param dungeon El calabozo en el que se encuentra el Archer.
      */
     public Archer(int x, int y, Dungeon dungeon) {
         super(x, y, 40, 40, 100, 15, 10, 4, new ImageIcon("ArcherCharacter.png"), dungeon);
     }
     
     /**
-     * Método para que el Archer ataque a una creature.
-     * Crea una nueva flecha y la mueve en la dirección especificada.
-     * Si la flecha colisiona con alguna criatura, le quita vida a la criatura.
+     * Permite que el Archer ataque a una criatura lanzando una flecha en la dirección actual.
+     * Crea una nueva flecha, la mueve y verifica colisiones con criaturas.
+     * Si la flecha impacta, aplica daño y elimina la flecha.
+     *
      * @param creatures Las criaturas en el calabozo.
      */
     @Override
@@ -141,8 +144,9 @@ public class Archer extends Knight {
         
   }
     /**
-     * Dibuja el Archer en el objeto Graphics proporcionado.
-     * @param g El objeto Graphics en el que se dibuja el Archer.
+     * Dibuja el Archer y todas sus flechas en el objeto Graphics proporcionado.
+     *
+     * @param g El objeto Graphics en el que se dibuja el Archer y sus flechas.
      */
     @Override
     public void draw(Graphics g) {
@@ -153,18 +157,18 @@ public class Archer extends Knight {
         
     }
 
-    
-
     /**
-     * Obtiene las flechas del Archer.
-     * @return Las flechas del Archer.
+     * Obtiene la lista de flechas del Archer.
+     *
+     * @return Lista de flechas del Archer.
      */
     public ArrayList<Arrow> getArrows() {
         return arrows;
     }
 
     /**
-     * Establece las flechas del Archer.
+     * Establece la lista de flechas del Archer.
+     *
      * @param arrows Las flechas a establecer.
      */
     public void setArrows(ArrayList<Arrow> arrows) {

@@ -16,8 +16,10 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- * Clase Magician que extiende de Knight.
- * Esta clase representa un mago en el juego.
+ * Clase Magician que representa un caballero mago en el juego.
+ * Hereda de Knight y permite lanzar bolas de fuego (Fireball) como ataque a las criaturas.
+ * Gestiona la creación, movimiento y dibujo de las bolas de fuego lanzadas.
+ *
  * @author Juan Sebastian Arias
  * @author Juan Jose Trujillo
  * @author Juan Jose Cardona
@@ -31,19 +33,21 @@ public class Magician extends Knight{
     
     /**
      * Constructor de la clase Magician.
+     * Inicializa las propiedades del mago con los valores proporcionados.
+     *
      * @param x Coordenada x del mago en el tablero.
      * @param y Coordenada y del mago en el tablero.
      * @param dungeon El calabozo en el que se encuentra el mago.
      */
-
     public Magician(int x, int y, Dungeon dungeon) {
         super(x, y, 16, 29, 80, 40, 100, 5, new ImageIcon("MagicianCharacter.png"), dungeon);
     }
     
     /**
-     * Método para que el Magician ataque a una creature.
-     * Crea una nueva bola de fuego y la mueve en la dirección especificada.
-     * Si la bola de fuego colisiona con alguna criatura, le quita vida a la criatura.
+     * Permite que el Magician ataque a una criatura lanzando una bola de fuego en la dirección actual.
+     * Crea una nueva bola de fuego, la mueve y verifica colisiones con criaturas.
+     * Si la bola de fuego impacta, aplica daño y elimina la bola de fuego.
+     *
      * @param creatures Las criaturas en el calabozo.
      */
     @Override
@@ -78,8 +82,9 @@ public void attackArthur(ArrayList<Monster> creatures) {
 }
     
     /**
-     * Método para dibujar al mago en el tablero.
-     * @param g Objeto Graphics para dibujar al mago.
+     * Dibuja el mago y todas sus bolas de fuego en el objeto Graphics proporcionado.
+     *
+     * @param g Objeto Graphics para dibujar al mago y sus bolas de fuego.
      */
     @Override
     public void draw(Graphics g) {
@@ -89,9 +94,10 @@ public void attackArthur(ArrayList<Monster> creatures) {
         }
         
     }
-
+    
     /**
-     * Obtiene las bolas de fuego del mago.
+     * Obtiene la lista de bolas de fuego del mago.
+     *
      * @return Lista de bolas de fuego del mago.
      */
     public ArrayList<Fireball> getFireballs() {

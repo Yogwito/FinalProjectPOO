@@ -9,8 +9,10 @@ import java.util.TimerTask;
 import javax.swing.JFrame;
 
 /**
- * La clase Game representa el estado del juego y se encarga de la lógica principal del juego.
- * Implementa la interfaz Drawable, lo que significa que puede ser dibujada en una interfaz gráfica.
+ * La clase Game representa la ventana principal del juego y gestiona la lógica de actualización y renderizado.
+ * Implementa la interfaz Drawable, permitiendo que el dungeon se dibuje y se actualice en la interfaz gráfica.
+ * Utiliza doble buffering para evitar parpadeos y un temporizador para actualizar el estado del juego periódicamente.
+ * También gestiona la interacción del usuario mediante eventos de teclado.
  *
  * @author Juan Sebastian Arias
  * @author Juan Jose Trujillo
@@ -19,20 +21,22 @@ import javax.swing.JFrame;
  */
 public class Game extends javax.swing.JFrame implements Drawable {
     /**
-     * El mapa del juego
+     * El mapa del juego.
      */
     private final Dungeon map;
     
-    
+    /**
+     * Panel que contiene el dungeon (puede ser null si no se usa).
+     */
     private DungeonPanel dungeonPanel;
 
     /**
-     *  La imagen fuera de pantalla utilizada para el doble buffering
+     * Imagen fuera de pantalla utilizada para el doble buffering.
      */
     private Image offScreenImage;
 
     /**
-     * Los gráficos fuera de pantalla utilizados para el doble buffering
+     * Gráficos fuera de pantalla utilizados para el doble buffering.
      */
     private Graphics offScreenGraphics;
 
@@ -180,7 +184,7 @@ public class Game extends javax.swing.JFrame implements Drawable {
     }//GEN-LAST:event_formKeyPressed
 
     /**
-     *
+     * Redibuja la ventana del juego llamando a repaint().
      */
     @Override
     public void redraw() {

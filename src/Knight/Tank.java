@@ -14,30 +14,33 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- * Esta es una clase Tank que hereda de la clase Knight.
- * Representa un personaje específico (Tank) en un juego.
+ * Clase Tank que representa un caballero tanque en el juego.
+ * Hereda de Knight y permite atacar con un escudo en diferentes direcciones.
+ * Gestiona la creación, movimiento y verificación de ataques con el escudo.
+ *
  * @author Juan Sebastian Arias
  * @author Juan Jose Trujillo
  * @author Juan Jose Cardona
  * @version 1.0.2
  */
 public class Tank extends Knight{
-    
     /**
      * Constructor de la clase Tank.
-     * Inicializa las propiedades de la clase con los valores proporcionados.
-     * @param x  La coordenada x del Tank.
-     * @param y  La coordenada y del Tank.
-     * @param dungeon  El calabozo en el que se encuentra el Tank.
+     * Inicializa las propiedades del Tank con los valores proporcionados.
+     *
+     * @param x Coordenada x del Tank.
+     * @param y Coordenada y del Tank.
+     * @param dungeon El calabozo en el que se encuentra el Tank.
      */
     public Tank(int x, int y, Dungeon dungeon) {
         super(x, y, 20, 30, 1000000, 400, 8, 3,new ImageIcon("TankCharacter1.png"), dungeon);
     }
 
     /**
-     * Método para que el Tank ataque.
-     * Dependiendo de la dirección de ataque, crea un nuevo escudo y verifica si ataca a alguna criatura.
-     * Si ataca a alguna criatura, quita vida a la criatura atacada.
+     * Permite que el Tank ataque a una criatura con un escudo en la dirección actual.
+     * Crea un nuevo Escudo, lo mueve y verifica colisiones con criaturas.
+     * Si el escudo impacta, aplica daño.
+     *
      * @param creatures Las criaturas en el calabozo.
      */
     @Override
@@ -80,8 +83,9 @@ public class Tank extends Knight{
     
     /**
      * Verifica si el escudo ataca a alguna criatura.
+     *
      * @param creatures Las criaturas en el calabozo.
-     * @param escudo El escudo con la que se está atacando.
+     * @param escudo El escudo con el que se está atacando.
      * @return El índice de la criatura atacada, o -1 si no ataca a ninguna criatura.
      */
     @Override

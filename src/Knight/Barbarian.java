@@ -14,30 +14,33 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- * Esta es una clase Barbarian que hereda de la clase Knight.
- * Representa un personaje específico (Barbarian) en un juego.
+ * Clase Barbarian que representa un caballero bárbaro en el juego.
+ * Hereda de Knight y permite atacar con un hacha en diferentes direcciones.
+ * Gestiona la creación, movimiento y verificación de ataques con el hacha.
+ *
  * @author Juan Sebastian Arias
  * @author Juan Jose Trujillo
  * @author Juan Jose Cardona
  * @version 1.0.2
  */
 public class Barbarian extends Knight{
-    
     /**
      * Constructor de la clase Barbarian.
-     * Inicializa las propiedades de la clase con los valores proporcionados.
-     * @param x  La coordenada x del Barbarian.
-     * @param y  La coordenada y del Barbarian.
-     * @param dungeon  El calabozo en el que se encuentra el Barbarian.
+     * Inicializa las propiedades del Barbarian con los valores proporcionados.
+     *
+     * @param x Coordenada x del Barbarian.
+     * @param y Coordenada y del Barbarian.
+     * @param dungeon El calabozo en el que se encuentra el Barbarian.
      */
     public Barbarian(int x, int y, Dungeon dungeon) {
         super(x, y, 20, 30, 120, 70, 17, 5, new ImageIcon("BarbarianCharacter.png"), dungeon);
     }
     
     /**
-     * Método para que el Barbarian ataque.
-     * Dependiendo de la dirección de ataque, crea una nueva acha y verifica si ataca a alguna criatura.
-     * Si ataca a alguna criatura, quita vida a la criatura atacada.
+     * Permite que el Barbarian ataque a una criatura con un hacha en la dirección actual.
+     * Crea una nueva Acha, la mueve y verifica colisiones con criaturas.
+     * Si el hacha impacta, aplica daño.
+     *
      * @param creatures Las criaturas en el calabozo.
      */
     @Override
@@ -79,9 +82,10 @@ public class Barbarian extends Knight{
     }
     
     /**
-     * Verifica si el acha ataca a alguna criatura.
+     * Verifica si el hacha ataca a alguna criatura.
+     *
      * @param creatures Las criaturas en el calabozo.
-     * @param acha El acha con la que se está atacando.
+     * @param acha El hacha con la que se está atacando.
      * @return El índice de la criatura atacada, o -1 si no ataca a ninguna criatura.
      */
     @Override

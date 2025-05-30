@@ -18,8 +18,9 @@ import java.util.ArrayList;
 import interfaces.Reader;
 
 /**
- * Esta es una clase LectorArchivo que se utiliza para leer un archivo de texto y crear objetos del juego a partir de él.
+ * Clase LectorArchivo que se utiliza para leer un archivo de texto y crear objetos del juego a partir de él.
  * El archivo de texto representa un mapa del calabozo y contiene información sobre la ubicación de los muros y los monstruos.
+ * Implementa la interfaz Reader.
  *
  * @author Juan José Trujillo
  * @author Juan Sebastian Arias
@@ -27,7 +28,6 @@ import interfaces.Reader;
  * @version 1.0.2
  */
 public class LectorArchivo implements Reader {
-
     /**
      * La ruta del archivo a leer.
      */
@@ -78,65 +78,69 @@ public class LectorArchivo implements Reader {
      * @param dungeon El calabozo en el que se encuentran los monstruos.
      * @return Arreglo de monstruos que están en el mapa.
      */
-    
     public ArrayList<Monster> leerMonstruos(Dungeon dungeon) {
-    ArrayList<Monster> monstruos = new ArrayList<>();
-    int fila = 0;
+        ArrayList<Monster> monstruos = new ArrayList<>();
+        int fila = 0;
     
-    // Leer el archivo de texto
-    try (BufferedReader br = new BufferedReader(new FileReader(output))) {
-        String linea;
+        // Leer el archivo de texto
+        try (BufferedReader br = new BufferedReader(new FileReader(output))) {
+            String linea;
 
-        while ((linea = br.readLine()) != null) {
-            char[] caracteres = linea.toCharArray();
+            while ((linea = br.readLine()) != null) {
+                char[] caracteres = linea.toCharArray();
 
-            for (int columna = 0; columna < caracteres.length; columna+=1) {
-                if (caracteres[columna] == '2') {
-                    // Crear un monstruo en la posición (fila, columna)
+                for (int columna = 0; columna < caracteres.length; columna+=1) {
+                    if (caracteres[columna] == '2') {
+                        // Crear un monstruo en la posición (fila, columna)
                     
-                    Basilisk miMonstruo = new Basilisk(columna*Wall.WIDTH, fila*Wall.HEIGHT, dungeon);
-                    monstruos.add(miMonstruo);
-                }
-                if (caracteres[columna] == '3') {
-                    // Crear un monstruo en la posición (fila, columna)
+                        Basilisk miMonstruo = new Basilisk(columna*Wall.WIDTH, fila*Wall.HEIGHT, dungeon);
+                        monstruos.add(miMonstruo);
+                    }
+                    if (caracteres[columna] == '3') {
+                        // Crear un monstruo en la posición (fila, columna)
                     
-                    Demon miMonstruo = new Demon(columna*Wall.WIDTH, fila*Wall.HEIGHT, dungeon);
-                    monstruos.add(miMonstruo);
-                }
-                if (caracteres[columna] == '4') {
-                    // Crear un monstruo en la posición (fila, columna)
+                        Demon miMonstruo = new Demon(columna*Wall.WIDTH, fila*Wall.HEIGHT, dungeon);
+                        monstruos.add(miMonstruo);
+                    }
+                    if (caracteres[columna] == '4') {
+                        // Crear un monstruo en la posición (fila, columna)
                     
-                    Dragon miMonstruo = new Dragon(columna*Wall.WIDTH, fila*Wall.HEIGHT, dungeon);
-                    monstruos.add(miMonstruo);
-                }
-                if (caracteres[columna] == '5') {
-                    // Crear un monstruo en la posición (fila, columna)
+                        Dragon miMonstruo = new Dragon(columna*Wall.WIDTH, fila*Wall.HEIGHT, dungeon);
+                        monstruos.add(miMonstruo);
+                    }
+                    if (caracteres[columna] == '5') {
+                        // Crear un monstruo en la posición (fila, columna)
                     
-                    Giant miMonstruo = new Giant(columna*Wall.WIDTH, fila*Wall.HEIGHT, dungeon);
-                    monstruos.add(miMonstruo);
-                }
-                if (caracteres[columna] == '6') {
-                    // Crear un monstruo en la posición (fila, columna)
+                        Giant miMonstruo = new Giant(columna*Wall.WIDTH, fila*Wall.HEIGHT, dungeon);
+                        monstruos.add(miMonstruo);
+                    }
+                    if (caracteres[columna] == '6') {
+                        // Crear un monstruo en la posición (fila, columna)
                     
-                    Harpy miMonstruo = new Harpy(columna*Wall.WIDTH, fila*Wall.HEIGHT, dungeon);
-                    monstruos.add(miMonstruo);
-                }
-                if (caracteres[columna] == '7') {
-                    // Crear un monstruo en la posición (fila, columna)
+                        Harpy miMonstruo = new Harpy(columna*Wall.WIDTH, fila*Wall.HEIGHT, dungeon);
+                        monstruos.add(miMonstruo);
+                    }
+                    if (caracteres[columna] == '7') {
+                        // Crear un monstruo en la posición (fila, columna)
                     
-                    Unicorn miMonstruo = new Unicorn(columna*(Wall.WIDTH), fila*(Wall.HEIGHT), dungeon);
-                    monstruos.add(miMonstruo);
+                        Unicorn miMonstruo = new Unicorn(columna*(Wall.WIDTH), fila*(Wall.HEIGHT), dungeon);
+                        monstruos.add(miMonstruo);
+                    }
                 }
+
+                fila+=1;
             }
-
-            fila+=1;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-    return monstruos;
+        return monstruos;
     }
     
+    /**
+     * Lee el contenido de un archivo de texto y lo devuelve como una lista de líneas.
+     * @param path Ruta del archivo a leer.
+     * @return Lista de líneas leídas del archivo.
+     */
     @Override
     public ArrayList<String> read(String path) {
         ArrayList<String> lines = new ArrayList<>();
@@ -150,6 +154,5 @@ public class LectorArchivo implements Reader {
     }
         return lines;
 }
-
 
 }

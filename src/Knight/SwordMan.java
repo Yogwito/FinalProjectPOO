@@ -14,30 +14,33 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- * Esta es una clase Swordman que hereda de la clase Knight.
- * Representa un personaje específico (Swordman) en un juego.
+ * Clase SwordMan que representa un caballero espadachín en el juego.
+ * Hereda de Knight y permite atacar con una espada en diferentes direcciones.
+ * Gestiona la creación, movimiento y verificación de ataques con la espada.
+ *
  * @author Juan Sebastian Arias
  * @author Juan Jose Trujillo
  * @author Juan Jose Cardona
  * @version 1.0.2
  */
 public class SwordMan extends Knight{
-    
     /**
-     * Constructor de la clase Swordman.
-     * Inicializa las propiedades de la clase con los valores proporcionados.
-     * @param x  La coordenada x del Swordman.
-     * @param y  La coordenada y del Swordman.
-     * @param dungeon  El calabozo en el que se encuentra el Swordman.
+     * Constructor de la clase SwordMan.
+     * Inicializa las propiedades del SwordMan con los valores proporcionados.
+     *
+     * @param x Coordenada x del SwordMan.
+     * @param y Coordenada y del SwordMan.
+     * @param dungeon El calabozo en el que se encuentra el SwordMan.
      */
     public SwordMan(int x, int y, Dungeon dungeon) {
         super(x, y, 22, 25, 100, 52, 30, 8,new ImageIcon("SwordmanCharacter.png"), dungeon);
     }
 
     /**
-     * Método para que el Swordman ataque.
-     * Dependiendo de la dirección de ataque, crea una nueva espada y verifica si ataca a alguna criatura.
-     * Si ataca a alguna criatura, quita vida a la criatura atacada.
+     * Permite que el SwordMan ataque a una criatura con una espada en la dirección actual.
+     * Crea una nueva Espada, la mueve y verifica colisiones con criaturas.
+     * Si la espada impacta, aplica daño.
+     *
      * @param creatures Las criaturas en el calabozo.
      */
     @Override
@@ -76,9 +79,10 @@ public class SwordMan extends Knight{
             }
         }
     }
-    
+
     /**
      * Verifica si la espada ataca a alguna criatura.
+     *
      * @param creatures Las criaturas en el calabozo.
      * @param espada La espada con la que se está atacando.
      * @return El índice de la criatura atacada, o -1 si no ataca a ninguna criatura.
