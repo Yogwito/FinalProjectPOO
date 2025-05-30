@@ -41,6 +41,8 @@ public class Knight extends LivingBeing{
      * Daño que puede infligir el caballero.
      */
     private int damage;
+    
+    int direccion = 0;
 
     /**
      * Rango de ataque del caballero.
@@ -121,102 +123,98 @@ public class Knight extends LivingBeing{
     * @param creatures Lista de criaturas en el calabozo.
     * @return Verdadero si el caballero puede moverse, falso en caso contrario.
     */
-    public boolean move(int key, ArrayList<Wall> muros, ArrayList<Monster> creatures)
-    {
+    public boolean move(int key, ArrayList<Wall> muros, ArrayList<Monster> creatures){
         int xOriginal = x;
         int yOriginal = y;
-        
+
         if(key == KeyEvent.VK_W){
             sword = null;
             y -= speed;
             ataqueDireccion = 0;
+            direccion = 0;
         }
         if(key == KeyEvent.VK_S){
             sword = null;
             y += speed;
             ataqueDireccion = 1;
+            direccion = 1;
         }
         if(key == KeyEvent.VK_A){
             sword = null;
             x -= speed;
             ataqueDireccion = 2;
+            direccion = 2;
         }
-        if(key == KeyEvent.VK_D){
-            sword = null;
-            x += speed;
-            ataqueDireccion = 3;
-        }
-        for(Wall muro : muros){
-            if(this.checkCollision(muro))
-            {
-                this.setX(xOriginal);
-                this.setY(yOriginal);
-
-                return false;
-            }
-        }
-        int i = 0;
-        for(Monster monster : creatures){
-            if(this.checkCollision(monster) && !(monster instanceof Unicorn))
-            {
-                this.setX(xOriginal);
-                this.setY(yOriginal);
-                
-                this.recibirDano(monster.getDamage());
-                return false;
-            }
-            else if (this.checkCollision(monster) && monster instanceof Unicorn){
-                getDungeon().eliminarCreature(i);
-                int random = (int) (Math.random() * 2);
-                int randomupgrade = (int) (Math.random() * 3);
-                if(random == 0){
-                    Upgrade u = new Upgrade(null, true);
-                    u.setVisible(true);
-                    switch (randomupgrade) {
-                        case 0:
-                            setHealth(getHealth()+10);
-                            JOptionPane.showMessageDialog(null, "Health Upgrade");
-                            break;
-                        case 1:
-                            setDamage(getDamage()+10);
-                            JOptionPane.showMessageDialog(null, "Damage Upgrade");
-                            break;   
-                        case 2:
-                            setSpeed(getSpeed()+1);
-                            JOptionPane.showMessageDialog(null, "Speed Upgrade");
-                            break;
-                        default:
-                            throw new AssertionError();
-                    }
-                }
-                if(random == 1){
-                    Downgrade d = new Downgrade(null, true);
-                    d.setVisible(true);
-                        switch (randomupgrade) {
-                        case 0:
-                            setHealth(getHealth()-10);
-                            JOptionPane.showMessageDialog(null, "Health Downgrade");
-                            break;
-                        case 1:
-                            setDamage(getDamage()-10);
-                            JOptionPane.showMessageDialog(null, "Damage Downgrade");
-                            break;   
-                        case 2:
-                            setSpeed(getSpeed()-1);
-                            JOptionPane.showMessageDialog(null, "Speed Downgrade");
-                            break;
-                        default:
-                            throw new AssertionError();
-                    }
-                }
-                System.out.println("TODO");
-                return true;
-            }
-            i++;
-        }
-        
-        return true;
+    if(key == KeyEvent.VK_D){
+        sword = null;
+        x += speed;
+        ataqueDireccion = 3;
+        direccion = 3;
     }
+
+    for(Wall muro : muros){
+        if(this.checkCollision(muro)) {
+            this.setX(xOriginal);
+            this.setY(yOriginal);
+            return false;
+        }
+    }
+
+    int i = 0;
+    for(Monster monster : creatures){
+        if(this.checkCollision(monster) && !(monster instanceof Unicorn)) {
+            this.setX(xOriginal);
+            this.setY(yOriginal);
+            this.recibirDano(monster.getDamage());
+            return false;
+        }
+        else if (this.checkCollision(monster) && monster instanceof Unicorn){
+            getDungeon().eliminarCreature(i);
+            int random = (int) (Math.random() * 2);
+            int randomupgrade = (int) (Math.random() * 3);
+            if(random == 0){
+                Upgrade u = new Upgrade(null, true);
+                u.setVisible(true);
+                switch (randomupgrade) {
+                    case 0 -> {
+                        setHealth(getHealth()+10);
+                        JOptionPane.showMessageDialog(null, "Health Upgrade");
+                    }
+                    case 1 -> {
+                        setDamage(getDamage()+10);
+                        JOptionPane.showMessageDialog(null, "Damage Upgrade");
+                    }
+                    case 2 -> {
+                        setSpeed(getSpeed()+1);
+                        JOptionPane.showMessageDialog(null, "Speed Upgrade");
+                    }
+                }
+            }
+            if(random == 1){
+                Downgrade d = new Downgrade(null, true);
+                d.setVisible(true);
+                switch (randomupgrade) {
+                    case 0 -> {
+                        setHealth(getHealth()-10);
+                        JOptionPane.showMessageDialog(null, "Health Downgrade");
+                    }
+                    case 1 -> {
+                        setDamage(getDamage()-10);
+                        JOptionPane.showMessageDialog(null, "Damage Downgrade");
+                    }
+                    case 2 -> {
+                        setSpeed(getSpeed()-1);
+                        JOptionPane.showMessageDialog(null, "Speed Downgrade");
+                    }
+                }
+            }
+            return true;
+        }
+        i++;
+    }
+
+    return true;
+}
     
     /**
     * Método para que el caballero ataque a las criaturas.
@@ -282,4 +280,7 @@ public class Knight extends LivingBeing{
         gameOver.setVisible(true);
     }
 
+    public int getDireccion() {
+        return this.direccion;
+}
 }

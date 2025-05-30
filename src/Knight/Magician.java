@@ -46,110 +46,36 @@ public class Magician extends Knight{
      * Si la bola de fuego colisiona con alguna criatura, le quita vida a la criatura.
      * @param creatures Las criaturas en el calabozo.
      */
-    public void attackArthur(ArrayList<Monster> creatures) {
-    int ataque = -1;
-        System.out.println("atacando");
-    
-    switch (getAtaqueDireccion()) {
-      case 0 -> {
-        Fireball fireball = new Fireball(x+(width/2), (y-17), getDungeon(), "Fireball1.png");
-        fireball.setDrawable(this.getDrawable());
-        getFireballs().add(fireball);
-        while (fireball.isInRange()) {
-          fireball.move(0);
-            System.out.println("se mueve:");
-          dungeon.redraw();
-          ataque = verificarAtaque(creatures, fireball);
-          if (ataque != -1){
-            getDungeon().quitarVidaCreature(ataque, getDamage());
-            
-              System.out.println("le di");
-            break;
-            
-          }
-          try {
-                    // Agregar un retraso de 100 milisegundos (ajusta según sea necesario)
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-        }
-        getFireballs().remove(fireball);
-      }
-      case 1 -> {
-        Fireball fireball = new Fireball(x+(width/2), (y+height), getDungeon(), "Fireball1.png");
-        fireball.setDrawable(this.getDrawable());
-        getFireballs().add(fireball);
-        while (fireball.isInRange()) {
-          fireball.move(1);
-          
-          dungeon.redraw();
-          ataque = verificarAtaque(creatures, fireball);
-          if (ataque != -1){
-            getDungeon().quitarVidaCreature(ataque, getDamage());
-            
-            break;
-          }
-          try {
-                    // Agregar un retraso de 100 milisegundos (ajusta según sea necesario)
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-        }
-        getFireballs().remove(fireball);
-      }
-      case 2 -> {
-        Fireball fireball = new Fireball((x-9), y+(height/2), getDungeon(), "Fireball1.png");
-        fireball.setDrawable(this.getDrawable());
-        getFireballs().add(fireball);
-        while (fireball.isInRange()) {
-          fireball.move(2);
-          
-          dungeon.redraw();
-          ataque = verificarAtaque(creatures, fireball);
-          if (ataque != -1){
-            getDungeon().quitarVidaCreature(ataque, getDamage());
-            
-            break;
-          }
-          try {
-                    // Agregar un retraso de 100 milisegundos (ajusta según sea necesario)
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-        }
-        getFireballs().remove(fireball);
-      }
-      case 3 -> {
-        Fireball fireball = new Fireball((x+width), y+(height/2), getDungeon(), "Fireball1.png");
-        fireball.setDrawable(this.getDrawable());
-        getFireballs().add(fireball);
-        while (fireball.isInRange()) {
-          fireball.move(3);
-            
-          dungeon.redraw();
-          ataque = verificarAtaque(creatures, fireball);
-          if (ataque != -1){
-            getDungeon().quitarVidaCreature(ataque, getDamage());
-            
-            break;
-          }
-          try {
-                    // Agregar un retraso de 100 milisegundos (ajusta según sea necesario)
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-        }
-        getFireballs().remove(fireball);
-      }
-      default -> {
-      }
+    @Override
+public void attackArthur(ArrayList<Monster> creatures) {
+    Fireball fireball = null;
+
+    switch (direccion) {
+        case 0 -> fireball = new Fireball(x + (width / 2), y - 17, getDungeon(), "Fireball1.png");
+        case 1 -> fireball = new Fireball(x + (width / 2), y + height, getDungeon(), "Fireball1.png");
+        case 2 -> fireball = new Fireball(x - 9, y + (height / 2), getDungeon(), "Fireball1.png");
+        case 3 -> fireball = new Fireball(x + width, y + (height / 2), getDungeon(), "Fireball1.png");
     }
-        
-  }
+
+    if (fireball != null) {
+        fireball.setDrawable(this.getDrawable()); // importante
+        getFireballs().add(fireball); // si estás manejando una lista propia
+
+        Fireball finalFireball = fireball;
+        new Thread(() -> {
+            while (finalFireball.isInRange()) {
+                finalFireball.move(direccion);
+                verificarAtaque(creatures, finalFireball);
+                try {
+                    Thread.sleep(30);
+                } catch (InterruptedException e) {
+                    break;
+                }
+            }
+            getFireballs().remove(finalFireball); // quítala de tu lista, no del dungeon
+        }).start();
+    }
+}
     
     /**
      * Método para dibujar al mago en el tablero.
