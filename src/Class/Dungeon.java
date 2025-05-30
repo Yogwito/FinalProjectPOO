@@ -17,6 +17,7 @@ import Knight.Tank;
 import Knight.SwordMan;
 import Knight.Archer;
 import Knight.Knight;
+import dungeons.gui.Game;
 import dungeons.gui.GameOver;
 import dungeons.gui.LevelCompleted;
 import java.awt.Color;
@@ -228,27 +229,22 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
      * @param key
      */
     
-
-
     public void actKnight(int key) {
-    if (key == KeyEvent.VK_ESCAPE || key == KeyEvent.VK_Q) {
-        this.active = false;
-        RegistroPartida registro = new RegistroPartida();
-        registro.guardar(nombreJugador, score);  // Usa el nombre real del jugador
-        new MenuPrincipal().setVisible(true);
-    }
+        if (!active) return; 
 
-    if (active && (
-        key == KeyEvent.VK_W ||
-        key == KeyEvent.VK_S ||
-        key == KeyEvent.VK_A ||
-        key == KeyEvent.VK_D ||
-        key == KeyEvent.VK_SPACE
-    )) {
-        arthur.actionHandle(key, muros, creatures);
-        drawable.redraw();
+        if (key == KeyEvent.VK_ESCAPE || key == KeyEvent.VK_Q) {
+            this.active = false;
+            RegistroPartida registro = new RegistroPartida();
+            registro.guardar(nombreJugador, score);
+            new MenuPrincipal().setVisible(true);
+            return;
+        }
+
+        if (key == KeyEvent.VK_W || key == KeyEvent.VK_S || key == KeyEvent.VK_A || key == KeyEvent.VK_D || key == KeyEvent.VK_SPACE) {
+            arthur.actionHandle(key, muros, creatures);
+            drawable.redraw();
+        }
     }
-}    
     public void verificarPerder(int llamado){
         if (arthur.getHealth() <= 0 && llamado == 1) {
             this.active = false;
@@ -385,5 +381,11 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     }
     public void setActive(boolean active) {
         this.active = active;
-    }   
+    }
+    private Game game;
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
 }

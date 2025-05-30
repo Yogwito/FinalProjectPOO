@@ -6,7 +6,9 @@ package dungeons.gui;
 
 import Class.Dungeon;
 import Class.RegistroPartida;
+import dungeons.gui.Game;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
@@ -99,9 +101,18 @@ public class GameOver extends javax.swing.JDialog {
 
     private void jButtonReintentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReintentarActionPerformed
         // TODO add your handling code here:
-        Game nuevaPartida = new Game(new Dungeon(0, 0, 800, 800, tipo, nivel));
+        
+        Dungeon dungeon = new Dungeon(0, 0, 800, 800, tipo, nivel, nombreJugador);
+        Game nuevaPartida = new Game(dungeon);
+        dungeon.setDrawable(nuevaPartida); // ← Esto evita el error de drawable null
+        nuevaPartida.setTitle("Scavenger Hunt");
+        nuevaPartida.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        nuevaPartida.setSize(800, 850);
+        nuevaPartida.setLocationRelativeTo(null);
         nuevaPartida.setVisible(true);
-        dispose();   
+        nuevaPartida.requestFocus(); // Asegura que reciba eventos del teclado
+        dispose(); // Cierra la ventana GameOver
+
     }//GEN-LAST:event_jButtonReintentarActionPerformed
 
     /**

@@ -275,16 +275,11 @@ public class Knight extends LivingBeing{
     private void moveRight(ArrayList<Wall> muros) {
         move(KeyEvent.VK_D, muros, dungeon.getCreatures());
     }
-    public void recibirDano(int cantidad) {
-        this.health -= cantidad;
-        if (this.health <= 0) {
-            this.health = 0;
-            morir();
-        }
-    }
+    @Override
     public void morir() {
         dungeon.setActive(false);
         GameOver gameOver = new GameOver(null, true, dungeon.getNivel(), dungeon.getTipo(), dungeon.getNombreJugador());
         gameOver.setVisible(true);
     }
+
 }

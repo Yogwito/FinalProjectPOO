@@ -3,11 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Documents/POO/FinalProjectPOO/src/Class/RegistroPartida.java</file>
-            <file>file:/C:/Users/User/Documents/POO/FinalProjectPOO/src/interfaces/Reader.java</file>
-            <file>file:/C:/Users/User/Documents/POO/FinalProjectPOO/src/Class/LivingBeing.java</file>
-            <file>file:/C:/Users/User/Documents/POO/FinalProjectPOO/src/dungeons/gui/LevelCompleted.java</file>
-            <file>file:/C:/Users/User/Documents/POO/FinalProjectPOO/src/interfaces/Writer.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Knight/Knight.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Class/LivingBeing.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Class/Dungeon.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Armas/Weapon.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Creature/MonsterThread.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/dungeons/gui/GameOver.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/Creature/Monster.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/dungeons/gui/CharacterSelection.java</file>
+            <file>file:/C:/Users/juans/Desktop/poo/FinalProyect/src/dungeons/gui/LevelCompleted.java</file>
         </group>
     </open-files>
 </project-private>

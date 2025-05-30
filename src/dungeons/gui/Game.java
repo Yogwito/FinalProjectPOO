@@ -6,6 +6,7 @@ import Class.Dungeon;
 import java.awt.Image;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JFrame;
 
 /**
  * La clase Game representa el estado del juego y se encarga de la lógica principal del juego.
@@ -42,21 +43,37 @@ public class Game extends javax.swing.JFrame implements Drawable {
     public Game(Dungeon map) {
         initComponents();
         this.map = map;
-        this.setVisible(true); 
+        this.map.setDrawable(this); // ← esto es obligatorio
+
+        this.map.setGame(this);
+
+        // Asegura que el JFrame reciba eventos de teclado
+        this.setFocusable(true);
+        this.requestFocusInWindow();
+
+        // Configura la ventana
+        this.setTitle("Scavenger Hunt");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(800, 850);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+
+        // Inicia el temporizador de actualización del juego
         Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 map.setScore();
-                map.redraw();// Llama al método setScore cada segundo
-                if(!map.isActive()) {  
-                    dispose();
-                    
-                 }
-                 
+                map.redraw();
+
+                // Opcional: cerrar ventana solo si se confirma que todo terminó
+                if (!map.isActive()) {
+                    // dispose(); // Puedes activarlo si todo está bien con reintento
+                }
             }
         }, 1000, 1000);
     }
+
 
     /**
      * Este método se utiliza para actualizar la pantalla del juego.
@@ -155,13 +172,9 @@ public class Game extends javax.swing.JFrame implements Drawable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        if (map.isActive() == false){
-            MenuPrincipal menu = new MenuPrincipal();
-            menu.setSize(587, 492);
-            menu.setVisible(true);
-            this.setVisible(false); 
-        }
+        if (!map.isActive()) return;  // Si el mapa está inactivo, no hacer nada
         map.actKnight(evt.getKeyCode());
+        System.out.println("Tecla: " + evt.getKeyCode());
     }//GEN-LAST:event_formKeyPressed
 
     /**

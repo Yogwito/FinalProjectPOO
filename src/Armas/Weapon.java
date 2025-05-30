@@ -9,6 +9,7 @@ import Class.Dungeon;
 import Class.LivingBeing;
 import Class.Sprite;
 import Class.Wall;
+import Knight.Knight;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -130,7 +131,7 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
 
         // Check for collisions with living beings
         if (target != null && target.checkCollision(this)) {
-            target.setHealth(target.getHealth() - damage);
+            target.recibirDano(damage);
             setExpired(true);
             return true;
         }

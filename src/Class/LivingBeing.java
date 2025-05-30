@@ -249,6 +249,18 @@ public abstract class LivingBeing extends Sprite{
         e.printStackTrace();
     }
     return stats;
-}
+    }
+    public void recibirDano(int cantidad) {
+        this.health -= cantidad;
+        if (this.health <= 0) {
+            this.health = 0;
+            morir();
+        }
+    }
+
+    public void morir() {
+        // Este método se puede sobrescribir en Knight o Monster si necesitas acciones específicas
+    }
+
 
 }
