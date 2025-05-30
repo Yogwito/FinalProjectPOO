@@ -292,7 +292,7 @@ public class CharacterSelection extends javax.swing.JFrame {
         Dungeon map = new Dungeon(0, 0, 700, 800, getKnight(), level);
     Game gameMap = new Game(map);
     DungeonPanel dungeonPanel = new DungeonPanel(map);
-    map.setDrawable(dungeonPanel);
+    map.setDrawable((Drawable) dungeonPanel);
     gameMap.setContentPane(dungeonPanel);
     gameMap.setSize(700, 800);
     gameMap.setVisible(true);

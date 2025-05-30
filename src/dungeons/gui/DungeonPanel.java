@@ -4,7 +4,7 @@ import Class.Dungeon;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 
-public class DungeonPanel extends JPanel {
+public class DungeonPanel extends JPanel implements Drawable {
     private Dungeon dungeon;
 
     public DungeonPanel(Dungeon dungeon) {
@@ -17,5 +17,9 @@ public class DungeonPanel extends JPanel {
         if (dungeon != null) {
             dungeon.draw(g); 
         }
+    }
+        @Override
+    public void redraw() {
+        repaint();
     }
 }
