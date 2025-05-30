@@ -9,6 +9,9 @@ import Exception.NombreVacioException;
 import javax.swing.ImageIcon;
 
 /**
+ * Clase LevelCompleted que representa el cuadro de diálogo mostrado cuando el jugador completa un nivel.
+ * Permite mostrar la pantalla de victoria, visualizar y guardar el puntaje del jugador.
+ * Hereda de javax.swing.JDialog y utiliza componentes Swing para la interfaz gráfica.
  *
  * @author Juan Sebastian Arias
  * @author Juan Jose Trujillo
@@ -16,12 +19,15 @@ import javax.swing.ImageIcon;
  * @version 1.0.2
  */
 public class LevelCompleted extends javax.swing.JDialog {
+    /**
+     * Puntaje obtenido por el jugador al completar el nivel.
+     */
     private String score;
 
     /**
-     * Creates new form LevelCompleted
-     * @param parent
-     * @param modal
+     * Crea una nueva instancia del diálogo LevelCompleted.
+     * @param parent Ventana padre.
+     * @param modal Indica si el diálogo es modal.
      */
     public LevelCompleted(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -188,6 +194,11 @@ public class LevelCompleted extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción ejecutada al presionar el botón "Guardar".
+     * Guarda el puntaje del jugador si el nombre es válido.
+     * @param evt Evento de acción del botón.
+     */
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
         try {
@@ -206,21 +217,35 @@ public class LevelCompleted extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
-    private void jtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtNombreActionPerformed
-
+    /**
+     * Acción ejecutada al presionar el botón "Ver Score".
+     * Muestra el puntaje en el campo correspondiente.
+     * @param evt Evento de acción del botón.
+     */
     private void jbVerScoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVerScoreActionPerformed
         // TODO add your handling code here:
         jTextField1.setText(score);
     }//GEN-LAST:event_jbVerScoreActionPerformed
 
+    /**
+     * Acción ejecutada al interactuar con el campo de nombre.
+     * @param evt Evento de acción del campo de texto.
+     */
+    private void jtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtNombreActionPerformed
+
+    /**
+     * Acción ejecutada al interactuar con el campo de puntaje.
+     * @param evt Evento de acción del campo de texto.
+     */
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
-     * @param args the command line arguments
+     * Método principal para ejecutar el diálogo LevelCompleted de forma independiente.
+     * @param args Argumentos de línea de comandos (no utilizados).
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -262,6 +287,22 @@ public class LevelCompleted extends javax.swing.JDialog {
         });
     }
 
+    /**
+     * Obtiene el puntaje del jugador.
+     * @return El puntaje actual.
+     */
+    public String getScore() {
+        return score;
+    }
+
+    /**
+     * Establece el puntaje del jugador.
+     * @param score El puntaje a establecer.
+     */
+    public void setScore(String score) {
+        this.score = score;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -276,18 +317,4 @@ public class LevelCompleted extends javax.swing.JDialog {
     private javax.swing.JButton jbVerScore;
     private javax.swing.JTextField jtNombre;
     // End of variables declaration//GEN-END:variables
-
-    /**
-     * @return the score
-     */
-    public String getScore() {
-        return score;
-    }
-
-    /**
-     * @param score the score to set
-     */
-    public void setScore(String score) {
-        this.score = score;
-    }
 }

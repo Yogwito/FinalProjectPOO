@@ -16,25 +16,37 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
-* Clase Monster.
+ * Clase Monster que representa a una criatura enemiga en el juego.
+ * Hereda de LivingBeing y contiene atributos y métodos para el movimiento,
+ * ataque y verificación de colisiones con el entorno y el jugador.
+ *
  * @author Juan José Trujillo
  * @author Juan Sebastian Arias
  * @author Juan José Cardona
-* @version 1.0.2
-*/
- 
+ * @version 1.0.2
+ */
 public class Monster extends LivingBeing{
-    
+    /** Vida actual del monstruo. */
     private int health;
+    /** Daño que inflige el monstruo. */
     private int damage;
+    /** Rango de ataque del monstruo. */
     private int range;
+    /** Velocidad de movimiento del monstruo. */
     private int speed;
+    /** Imagen del monstruo. */
     private ImageIcon image;
+    /** Referencia al dungeon donde se encuentra el monstruo. */
     private Dungeon dungeon;
+    /** Indica si el monstruo se mueve hacia arriba. */
     private boolean yUpMove;
+    /** Indica si el monstruo se mueve hacia abajo. */
     private boolean yDoMove;
+    /** Indica si el monstruo se mueve hacia la derecha. */
     private boolean xRiMove;
+    /** Indica si el monstruo se mueve hacia la izquierda. */
     private boolean xLeMove;
+    /** Contador de turnos para cambiar de dirección. */
     private int turnCounter;
     
     /**

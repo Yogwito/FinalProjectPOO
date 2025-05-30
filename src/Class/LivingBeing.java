@@ -24,16 +24,17 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-
 /**
  * Esta es una clase abstracta LivingBeing que hereda de la clase Sprite.
  * Representa un ser vivo en un juego, que puede ser un monstruo o un caballero.
+ * Proporciona atributos y métodos comunes para todos los seres vivos del juego.
+ *
  * @author Juan José Cardona Daza
  * @author Juan Sebastian Arias
  * @author Juan José Trujillo
  * @version 1.0.2
  */
-public abstract class LivingBeing extends Sprite{
+public abstract class LivingBeing extends Sprite {
 
     /**
      * Un objeto Drawable que representa la apariencia del ser vivo.
@@ -69,10 +70,10 @@ public abstract class LivingBeing extends Sprite{
      * El calabozo en el que se encuentra el ser vivo.
      */
     private Dungeon dungeon;
-    
 
     /**
      *  Constructor que crea instancias de la clase LivingBeing.
+     *
      * @param x posicion en x del Livingbeing
      * @param y posicion en y del Livingbeing
      * @param width ancho del Livingbeing
@@ -82,174 +83,181 @@ public abstract class LivingBeing extends Sprite{
      * @param range Rango de ataque del Livingbeing
      * @param speed Velocidad de movimiento del Livingbeing
      * @param image Imagen que representa el Livingbeing
+     * @param dungeon Calabozo en el que se encuentra el Livingbeing
      */
-   
-
-    public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image, Dungeon dungeon) {
+    public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed, ImageIcon image, Dungeon dungeon) {
         super(x, y, width, height, Color.BLUE);
         this.health = health;
         this.damage = damage;
         this.range = range;
         this.speed = speed;
-        this.image = image; 
-        
+        this.image = image;
     }
-    
-    /**
-    * Establece el objeto Drawable que representa la apariencia del ser vivo.
-    * @param drawable El objeto Drawable a establecer.
-    */
-   public void setDrawable(Drawable drawable) {
-       this.drawable = drawable;
-       
-   }
-    
-    /**
-    * Establece el calabozo en el que se encuentra el ser vivo.
-    * @param dungeon El calabozo a establecer.
-    */
-   public void setDungeon(Dungeon dungeon) {
-       this.dungeon = dungeon;
-   }
-
-   /**
-    * Quita vida al ser vivo.
-    * @param daño La cantidad de vida a quitar.
-    */
-   public void quitarVida(int daño){
-       health = health - daño;
-   }
-
-   /**
-    * Método para que el ser vivo ataque.
-    */
-   public void attack(){
-       
-   }
 
     /**
-    * Dibuja la imagen que representa el ser vivo en el objeto Graphics proporcionado.
-    * @param g El objeto Graphics en el que se dibuja el ser vivo.
-    */
+     * Establece el objeto Drawable que representa la apariencia del ser vivo.
+     * @param drawable El objeto Drawable a establecer.
+     */
+    public void setDrawable(Drawable drawable) {
+        this.drawable = drawable;
+    }
+
+    /**
+     * Establece el calabozo en el que se encuentra el ser vivo.
+     * @param dungeon El calabozo a establecer.
+     */
+    public void setDungeon(Dungeon dungeon) {
+        this.dungeon = dungeon;
+    }
+
+    /**
+     * Quita vida al ser vivo.
+     * @param daño La cantidad de vida a quitar.
+     */
+    public void quitarVida(int daño) {
+        health = health - daño;
+    }
+
+    /**
+     * Método para que el ser vivo ataque.
+     */
+    public void attack() {
+        // Implementación en subclases
+    }
+
+    /**
+     * Dibuja la imagen que representa el ser vivo en el objeto Graphics proporcionado.
+     * @param g El objeto Graphics en el que se dibuja el ser vivo.
+     */
     @Override
     public void draw(Graphics g) {
         if (image != null) {
-            g.drawImage(image.getImage(), x, y,null);
+            g.drawImage(image.getImage(), x, y, null);
         } else {
             g.setColor(color);
             g.fillRect(x, y, width, height);
         }
     }
-    
-    
-    
- 
+
+    /**
+     * Redibuja el ser vivo usando su Drawable asociado.
+     */
     public void redraw() {
         getDrawable().redraw();
     }
 
     /**
-    * Obtiene la salud del ser vivo.
-    * @return La salud del ser vivo.
-    */
-   public int getHealth() {
-       return health;
-   }
+     * Obtiene la salud del ser vivo.
+     * @return La salud del ser vivo.
+     */
+    public int getHealth() {
+        return health;
+    }
 
-   /**
-    * Establece la salud del ser vivo.
-    * @param ataque La cantidad de salud a establecer.
-    */
-   public void setHealth(int ataque) {
-       this.health = health - ataque;
-   }
+    /**
+     * Establece la salud del ser vivo.
+     * @param ataque La cantidad de salud a establecer.
+     */
+    public void setHealth(int ataque) {
+        this.health = health - ataque;
+    }
 
-   /**
-    * Obtiene el daño que puede infligir el ser vivo.
-    * @return El daño que puede infligir el ser vivo.
-    */
-   public int getDamage() {
-       return damage;
-   }
+    /**
+     * Obtiene el daño que puede infligir el ser vivo.
+     * @return El daño que puede infligir el ser vivo.
+     */
+    public int getDamage() {
+        return damage;
+    }
 
-   /**
-    * Establece el daño que puede infligir el ser vivo.
-    * @param damage El daño a establecer.
-    */
-   public void setDamage(int damage) {
-       this.damage = damage;
-   }
+    /**
+     * Establece el daño que puede infligir el ser vivo.
+     * @param damage El daño a establecer.
+     */
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
 
-   /**
-    * Obtiene el rango de ataque del ser vivo.
-    * @return El rango de ataque del ser vivo.
-    */
-   public int getRange() {
-       return range;
-   }
+    /**
+     * Obtiene el rango de ataque del ser vivo.
+     * @return El rango de ataque del ser vivo.
+     */
+    public int getRange() {
+        return range;
+    }
 
-   /**
-    * Establece el rango de ataque del ser vivo.
-    * @param range El rango de ataque a establecer.
-    */
-   public void setRange(int range) {
-       this.range = range;
-   }
+    /**
+     * Establece el rango de ataque del ser vivo.
+     * @param range El rango de ataque a establecer.
+     */
+    public void setRange(int range) {
+        this.range = range;
+    }
 
-   /**
-    * Obtiene la velocidad del ser vivo.
-    * @return La velocidad del ser vivo.
-    */
-   public int getSpeed() {
-       return speed;
-   }
+    /**
+     * Obtiene la velocidad del ser vivo.
+     * @return La velocidad del ser vivo.
+     */
+    public int getSpeed() {
+        return speed;
+    }
 
-   /**
-    * Establece la velocidad del ser vivo.
-    * @param speed La velocidad a establecer.
-    */
-   public void setSpeed(int speed) {
-       this.speed = speed;
-   }
+    /**
+     * Establece la velocidad del ser vivo.
+     * @param speed La velocidad a establecer.
+     */
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
 
-   /**
-    * Obtiene el objeto Drawable que representa la apariencia del ser vivo.
-    * @return El objeto Drawable que representa la apariencia del ser vivo.
-    */
-   public Drawable getDrawable() {
-       return drawable;
-   }
+    /**
+     * Obtiene el objeto Drawable que representa la apariencia del ser vivo.
+     * @return El objeto Drawable que representa la apariencia del ser vivo.
+     */
+    public Drawable getDrawable() {
+        return drawable;
+    }
 
-   /**
-    * Obtiene la coordenada x del ser vivo.
-    * @return La coordenada x del ser vivo.
-    */
-   @Override
-   public int getX() {
-       return super.getX(); 
-   }
+    /**
+     * Obtiene la coordenada x del ser vivo.
+     * @return La coordenada x del ser vivo.
+     */
+    @Override
+    public int getX() {
+        return super.getX();
+    }
 
-   /**
-    * Obtiene la coordenada y del ser vivo.
-    * @return La coordenada y del ser vivo.
-    */
-   @Override
-   public int getY() {
-       return super.getY(); 
-   }
-   
-   public static int[] leerStats(String nombreArchivo) {
-    int[] stats = new int[6]; // ancho, alto, vida, daño, velocidad, rango
-    try (BufferedReader br = new BufferedReader(new FileReader("data/" + nombreArchivo))) {
-        for (int i = 0; i < stats.length; i++) {
-            stats[i] = Integer.parseInt(br.readLine());
+    /**
+     * Obtiene la coordenada y del ser vivo.
+     * @return La coordenada y del ser vivo.
+     */
+    @Override
+    public int getY() {
+        return super.getY();
+    }
+
+    /**
+     * Lee los stats de un ser vivo desde un archivo.
+     * @param nombreArchivo Nombre del archivo a leer.
+     * @return Un arreglo de enteros con los stats: ancho, alto, vida, daño, velocidad, rango.
+     */
+    public static int[] leerStats(String nombreArchivo) {
+        int[] stats = new int[6]; // ancho, alto, vida, daño, velocidad, rango
+        try (BufferedReader br = new BufferedReader(new FileReader("data/" + nombreArchivo))) {
+            for (int i = 0; i < stats.length; i++) {
+                stats[i] = Integer.parseInt(br.readLine());
+            }
+        } catch (IOException e) {
+            System.err.println("Error leyendo archivo: " + nombreArchivo);
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        System.err.println("Error leyendo archivo: " + nombreArchivo);
-        e.printStackTrace();
+        return stats;
     }
-    return stats;
-    }
+
+    /**
+     * Aplica daño al ser vivo y verifica si debe morir.
+     * @param cantidad Cantidad de daño a recibir.
+     */
     public void recibirDano(int cantidad) {
         this.health -= cantidad;
         if (this.health <= 0) {
@@ -258,10 +266,11 @@ public abstract class LivingBeing extends Sprite{
         }
     }
 
+    /**
+     * Método que maneja la muerte del ser vivo. Puede ser sobrescrito en subclases.
+     */
     public void morir() {
         // Este método se puede sobrescribir en Knight o Monster si necesitas acciones específicas
         dungeon.eliminarCreature(this);
     }
-
-
 }

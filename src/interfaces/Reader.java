@@ -4,13 +4,19 @@
  */
 package interfaces;
 
+import java.util.ArrayList;
+
 /**
+ * Interfaz Reader para la lectura de archivos.
+ * Define el método para leer el contenido de un archivo y devolverlo como una lista de cadenas.
  *
  * @author juans
  */
-
-import java.util.ArrayList;
-
 public interface Reader {
+    /**
+     * Lee el contenido de un archivo y lo devuelve como una lista de cadenas.
+     * @param filePath Ruta del archivo a leer.
+     * @return Lista de líneas leídas del archivo.
+     */
     ArrayList<String> read(String filePath);
 }

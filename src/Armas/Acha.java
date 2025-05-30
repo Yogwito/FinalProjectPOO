@@ -10,8 +10,8 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 
 /**
- * Esta es una clase Acha que hereda de la clase Weapon.
- * Representa un arma específica (Acha) en el juego.
+ * Clase Acha que representa un hacha en el juego. Hereda de Weapon.
+ * Permite dibujar el arma en pantalla.
  *
  * @author Juan José Trujillo
  * @author Juan Sebastian Arias

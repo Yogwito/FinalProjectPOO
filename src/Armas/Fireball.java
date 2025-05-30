@@ -54,7 +54,6 @@ public class Fireball extends Weapon implements Drawable{
     }
     
 
-   
     /**
      * Mueve la bola de fuego en la dirección especificada.
      * Si la bola de fuego se mueve fuera de su rango, se marca como fuera de rango.
@@ -62,28 +61,28 @@ public class Fireball extends Weapon implements Drawable{
      */
     public void move(int direction) {
         switch (direction) {
-          case 0 -> {
-            // Mover hacia arriba
-            y -= 1;
-            distanceTraveled += 1; // Actualizar la distancia recorrida
-          }
-          case 1 -> {
-            // Mover hacia abajo
-            y += 1;
-            distanceTraveled += 1; // Actualizar la distancia recorrida
-          }
-          case 2 -> {
-            // Mover hacia la izquierda
-            x -= 1;
-            distanceTraveled += 1; // Actualizar la distancia recorrida
-          }
-          case 3 -> {
-            // Mover hacia la derecha
-            x += 1;
-            distanceTraveled += 1; // Actualizar la distancia recorrida
-          }
-          default -> {
-          }
+            case 0 -> {
+                // Mover hacia arriba
+                y -= 1;
+                distanceTraveled += 1; // Actualizar la distancia recorrida
+            }
+            case 1 -> {
+                // Mover hacia abajo
+                y += 1;
+                distanceTraveled += 1; // Actualizar la distancia recorrida
+            }
+            case 2 -> {
+                // Mover hacia la izquierda
+                x -= 1;
+                distanceTraveled += 1; // Actualizar la distancia recorrida
+            }
+            case 3 -> {
+                // Mover hacia la derecha
+                x += 1;
+                distanceTraveled += 1; // Actualizar la distancia recorrida
+            }
+            default -> {
+            }
         }
         // Comprobar si la bola de fuego ha recorrido su rango
         if (distanceTraveled >= range) {
@@ -96,18 +95,15 @@ public class Fireball extends Weapon implements Drawable{
      * @param g El objeto Graphics en el que se dibuja la bola de fuego.
      */
     @Override
-public void draw(Graphics g) {
-    try {
-        ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource(getPath()));
-        g.drawImage(image.getImage(), x, y, null);
-    } catch (Exception e) {
-        g.setColor(color);
-        g.fillRect(x, y, width, height);
+    public void draw(Graphics g) {
+        try {
+            ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource(getPath()));
+            g.drawImage(image.getImage(), x, y, null);
+        } catch (Exception e) {
+            g.setColor(color);
+            g.fillRect(x, y, width, height);
+        }
     }
-}
-    
-    
-
     /**
      * Redibuja la bola de fuego.
      */
@@ -133,19 +129,25 @@ public void draw(Graphics g) {
     }
 
     /**
-     * @return the drawable
+     * Obtiene el objeto Drawable asociado a la bola de fuego.
+     * @return El objeto Drawable asociado.
      */
     public Drawable getDrawable() {
         return drawable;
     }
 
     /**
-     * @param drawable the drawable to set
+     * Asocia un objeto Drawable a la bola de fuego.
+     * @param drawable El objeto Drawable a asociar.
      */
     public void setDrawable(Drawable drawable) {
         this.drawable = drawable;
     }
-    
+
+    /**
+     * Ejecuta el ciclo de movimiento y redibujado de la bola de fuego en un hilo.
+     * Mueve la bola de fuego en la dirección actual y la redibuja periódicamente.
+     */
     public void run() {
         while (true) {
             move(this.getDirection());
@@ -157,6 +159,4 @@ public void draw(Graphics g) {
             }
         }
     }
-
-    
 }

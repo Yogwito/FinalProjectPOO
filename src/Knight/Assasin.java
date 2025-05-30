@@ -14,28 +14,30 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- * Esta es una clase Assasin que hereda de la clase Knight.
- * Representa un personaje específico (Assasin) en un juego.
+ * Clase Assasin que representa un caballero asesino en el juego.
+ * Hereda de Knight y permite atacar con una daga en diferentes direcciones.
+ * Gestiona la creación, movimiento y verificación de ataques con la daga.
+ *
  * @author Juan Sebastian Arias
  * @author Juan Jose Trujillo
  * @author Juan Jose Cardona
  * @version 1.0.2
  */
 public class Assasin extends Knight{
-    
     /**
      * Constructor de la clase Assasin.
-     * Inicializa las propiedades de la clase con los valores proporcionados.
-     * @param x  La coordenada x del Assasin.
-     * @param y  La coordenada y del Assasin.
-     * @param dungeon  El calabozo en el que se encuentra el Assasin.
+     * Inicializa las propiedades del Assasin con los valores proporcionados.
+     *
+     * @param x Coordenada x del Assasin.
+     * @param y Coordenada y del Assasin.
+     * @param dungeon El calabozo en el que se encuentra el Assasin.
      */
      public Assasin(int x, int y, Dungeon dungeon) {
         super(x, y,20,28, 100, 75, 6, 10 , new ImageIcon("AssasinCharacter.png"), dungeon);
     }
 
     /**
-     * Método para que el Assasin ataque.
+     * Método para que el Assasin ataque (hereda comportamiento de Knight).
      */
     @Override
     public void attack() {
@@ -43,9 +45,10 @@ public class Assasin extends Knight{
     }
     
     /**
-     * Método para que el Assasin ataque.
-     * Dependiendo de la dirección de ataque, crea una nueva Daga y verifica si ataca a alguna criatura.
-     * Si ataca a alguna criatura, quita vida a la criatura atacada.
+     * Permite que el Assasin ataque a una criatura con una daga en la dirección actual.
+     * Crea una nueva Daga, la mueve y verifica colisiones con criaturas.
+     * Si la daga impacta, aplica daño.
+     *
      * @param creatures Las criaturas en el calabozo.
      */
     @Override
@@ -88,6 +91,7 @@ public class Assasin extends Knight{
     
     /**
      * Verifica si la daga ataca a alguna criatura.
+     *
      * @param creatures Las criaturas en el calabozo.
      * @param daga La daga con la que se está atacando.
      * @return El índice de la criatura atacada, o -1 si no ataca a ninguna criatura.

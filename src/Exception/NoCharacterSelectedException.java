@@ -5,10 +5,16 @@
 package Exception;
 
 /**
+ * Excepción personalizada que se lanza cuando no se ha seleccionado un personaje en la selección de personajes.
+ * Utilizada para evitar que el juego inicie sin que el usuario haya elegido un caballero.
  *
  * @author juans
  */
 public class NoCharacterSelectedException extends Exception {
+    /**
+     * Crea una nueva excepción con el mensaje especificado.
+     * @param mensaje Mensaje descriptivo del error.
+     */
     public NoCharacterSelectedException(String mensaje) {
         super(mensaje);
     }

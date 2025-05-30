@@ -69,9 +69,9 @@ public abstract class Sprite {
      */
     public boolean checkCollision (Sprite sprite) {
         if(this.getX() < (sprite.getX()) + sprite.getWidth() &&
-           this.getX() + this.getWidth() > (sprite.getX()) &&
-           this.getY() < (sprite.getY()) + sprite.getHeight() &&
-           this.getY() + this.getHeight() > (sprite.getY()))
+            this.getX() + this.getWidth() > (sprite.getX()) &&
+            this.getY() < (sprite.getY()) + sprite.getHeight() &&
+            this.getY() + this.getHeight() > (sprite.getY()))
             return true;
         return false;
     }
@@ -87,81 +87,80 @@ public abstract class Sprite {
     // Los siguientes son métodos getter y setter para las propiedades de la clase.
 
     /**
-     *
-     * @return
+     * Obtiene la posición X del sprite.
+     * @return La coordenada X actual del sprite.
      */
-
     public int getX() {
         return x;
     }
 
     /**
-     *
-     * @param x
+     * Establece la posición X del sprite.
+     * @param x Nueva coordenada X del sprite.
      */
     public void setX(int x) {
         this.x = x;
     }
 
     /**
-     *
-     * @return
+     * Obtiene la posición Y del sprite.
+     * @return La coordenada Y actual del sprite.
      */
     public int getY() {
         return y;
     }
 
     /**
-     *
-     * @param y
+     * Establece la posición Y del sprite.
+     * @param y Nueva coordenada Y del sprite.
      */
     public void setY(int y) {
         this.y = y;
     }
 
     /**
-     *
-     * @return
+     * Obtiene el ancho del sprite.
+     * @return El ancho actual del sprite.
      */
     public int getWidth() {
         return width;
     }
 
     /**
-     *
-     * @param width
+     * Establece el ancho del sprite.
+     * @param width Nuevo ancho del sprite.
      */
     public void setWidth(int width) {
         this.width = width;
     }
 
     /**
-     *
-     * @return
+     * Obtiene la altura del sprite.
+     * @return La altura actual del sprite.
      */
     public int getHeight() {
         return height;
     }
 
     /**
-     *
-     * @param height
+     * Establece la altura del sprite.
+     * @param height Nueva altura del sprite.
      */
     public void setHeight(int height) {
         this.height = height;
     }
 
     /**
-     *
-     * @return
+     * Obtiene el color del sprite.
+     * @return Color actual del sprite.
      */
     public Color getColor() {
         return color;
     }
 
     /**
-     *
-     * @param color
+     * Establece el color del sprite.
+     * @param color Nuevo color del sprite.
      */
     public void setColor(Color color) {
         this.color = color;

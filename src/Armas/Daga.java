@@ -10,8 +10,8 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 
 /**
- * Esta es una clase Daga que hereda de la clase Weapon.
- * Representa un arma específica (Daga) en el juego.
+ * Clase Daga que representa una daga en el juego. Hereda de Weapon.
+ * Permite dibujar el arma en pantalla.
  *
  * @author Juan José Trujillo
  * @author Juan Sebastian Arias

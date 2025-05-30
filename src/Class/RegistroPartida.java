@@ -1,14 +1,30 @@
-
 package Class;
 
 import interfaces.Writer;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Clase RegistroPartida utilizada para guardar y leer los puntajes de los jugadores.
+ * Implementa la interfaz Writer para persistencia de datos de puntajes.
+ * Permite registrar y actualizar el puntaje más alto de cada jugador en un archivo de texto.
+ *
+ * @author (autor/es original/es)
+ * @version 1.0
+ */
+
 public class RegistroPartida implements Writer {
 
+    /**
+     * Nombre del archivo donde se guardan los puntajes.
+     */
     private final String archivo = "puntajes.txt";
 
+    /**
+     * Guarda el puntaje de un jugador solo si es mayor al ya registrado.
+     * @param nombreJugador Nombre del jugador.
+     * @param nuevoPuntaje Nuevo puntaje a guardar.
+     */
     @Override
     public void guardar(String nombreJugador, int nuevoPuntaje) {
         Map<String, Integer> puntajes = cargarPuntajes();
@@ -21,6 +37,8 @@ public class RegistroPartida implements Writer {
     }
     /**
      * Guarda el puntaje más alto alcanzado por el jugador.
+     * @param nombreJugador Nombre del jugador.
+     * @param nuevoPuntaje Nuevo puntaje a registrar.
      */
     public void registrarPuntaje(String nombreJugador, int nuevoPuntaje) {
         Map<String, Integer> puntajes = cargarPuntajes();
@@ -34,6 +52,7 @@ public class RegistroPartida implements Writer {
 
     /**
      * Carga los puntajes desde el archivo.
+     * @return Un mapa con los nombres de los jugadores y sus puntajes.
      */
     private Map<String, Integer> cargarPuntajes() {
         Map<String, Integer> puntajes = new HashMap<>();
@@ -55,7 +74,8 @@ public class RegistroPartida implements Writer {
     }
 
     /**
-     * Guarda los puntajes actualizados.
+     * Guarda los puntajes actualizados en el archivo.
+     * @param puntajes Mapa con los nombres de los jugadores y sus puntajes.
      */
     private void guardarPuntajes(Map<String, Integer> puntajes) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(archivo))) {

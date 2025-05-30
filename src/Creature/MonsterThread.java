@@ -1,4 +1,3 @@
-
 package Creature;
 
 import Class.Dungeon;
@@ -10,13 +9,15 @@ import java.util.concurrent.TimeUnit;
 /**
  * Esta es una clase MonsterThread que hereda de la clase Thread.
  * Se utiliza para manejar el movimiento y el ataque de un monstruo en un hilo separado.
+ * Utiliza un ScheduledExecutorService para ejecutar acciones periódicas sobre el monstruo,
+ * como moverlo, atacar y redibujar el dungeon, mientras el juego no esté en pausa.
+ *
  * @author Juan José Trujillo
  * @author Juan Sebastian Arias
  * @author Juan José Cardona
  * @version 1.0.2
  */
 public class MonsterThread extends Thread {
-
     /**
      * El calabozo en el que se encuentra el monstruo.
      */
@@ -27,10 +28,15 @@ public class MonsterThread extends Thread {
      */
     private final Monster monster;
     
+    /**
+     * Scheduler para ejecutar tareas periódicas del monstruo.
+     */
     private ScheduledExecutorService scheduler;
     
+    /**
+     * Bandera para controlar la ejecución del hilo.
+     */
     private volatile boolean enEjecucion = true;
-
 
     /**
      * Constructor de la clase MonsterThread.
@@ -38,7 +44,6 @@ public class MonsterThread extends Thread {
      * @param dungeon El calabozo en el que se encuentra el monstruo.
      * @param monster El monstruo que este hilo está manejando.
      */
-    
     public MonsterThread(Dungeon dungeon, Monster monster) {
         this.dungeon = dungeon;
         this.monster = monster;
@@ -47,6 +52,7 @@ public class MonsterThread extends Thread {
     /**
      * El método que se ejecuta cuando se inicia el hilo.
      * Mueve al monstruo, verifica si el monstruo colisiona con el caballero y, en caso afirmativo, hace que el monstruo ataque.
+     * Si el monstruo es un Dragon, ataca periódicamente.
      * Luego, redibuja el calabozo.
      */
     @Override
@@ -75,6 +81,9 @@ public class MonsterThread extends Thread {
         }, 0, 1, TimeUnit.SECONDS);
     }
 
+    /**
+     * Detiene la ejecución del hilo y apaga el scheduler.
+     */
     public void detener() {
         if (scheduler != null && !scheduler.isShutdown()) {
             scheduler.shutdownNow(); // <- Detiene el hilo
@@ -88,6 +97,5 @@ public class MonsterThread extends Thread {
     public Monster getMonster() {
         return monster;
     }
-
 
 }

@@ -31,29 +31,46 @@ import dungeons.gui.MenuPrincipal;
 import javax.swing.JFrame;
 
 /**
- * Clase que representa el mapa del juego que contiene los muros y creaturas.
+ * Clase Dungeon que representa el mapa del juego, conteniendo muros, criaturas y al caballero principal.
+ * Gestiona la lógica de dibujo, interacción, estado del juego, score, vida, victoria y derrota.
+ * Permite crear el caballero según el tipo, mapear el dungeon desde archivos y controlar la validez de movimientos.
+ *
  * @author Juan José Cardona Daza
  * @author Juan Sebastian Arias
  * @author Juan José Trujillo
  * @version 1.0.1
  */
 public class Dungeon extends Sprite implements Drawable, Boundable{
-
+    /** Caballero principal del dungeon. */
     private Knight arthur;
+    /** Drawable asociado para redibujar el dungeon. */
     private Drawable drawable;
+    /** Lector de archivos para mapear el dungeon. */
     private LectorArchivo lector;
+    /** Lista de muros del dungeon. */
     private ArrayList<Wall> muros;
+    /** Lista de criaturas del dungeon. */
     private ArrayList<Monster> creatures;
+    /** Nombre del nivel actual. */
     private String nivel;
+    /** Imagen de fondo del dungeon. */
     private ImageIcon fondo = new ImageIcon("Background.png");
+    /** Puntaje actual del jugador. */
     private int score;
+    /** Indica si el dungeon está activo. */
     private boolean active;
+    /** Contador de llamadas para triggers únicos. */
     private int llamado;
+    /** Tipo de caballero seleccionado. */
     private String tipo;
+    /** Nombre del jugador. */
     private String nombreJugador;
+    /** Indica si el juego está en pausa. */
     private boolean isPaused = false;
+    /** Lista de hilos de monstruos activos. */
     private ArrayList<MonsterThread> monsterThreads = new ArrayList<>();
-
+    /** Instancia de Game asociada a este dungeon. */
+    private Game game;
 
     
 
@@ -90,6 +107,23 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     }
 
     /**
+     * Dibuja la vida actual del caballero en pantalla.
+     * @param g Objeto Graphics donde se dibuja la vida.
+     */
+    private void drawLife(Graphics g){
+        if (arthur.getHealth() > 0){
+            int[] pos = {10, 770};
+            String lifeToString = Integer.toString(arthur.getHealth());
+            for (int i = 0; i < lifeToString.length(); i++) {
+                int digit = Integer.parseInt(lifeToString.substring(i, i + 1));
+                g.drawImage(Assets.numbers(digit), pos[0], pos[1], null);
+                pos[0] = pos[0] + 20;
+            }  
+        }
+        verificarPerder(llamado);
+    }
+
+    /**
      *
      * @param drawable
      */
@@ -97,10 +131,17 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         this.drawable = drawable;
     }
     
+    /**
+     * Obtiene el nombre del jugador actual.
+     * @return Nombre del jugador.
+     */
     public String getNombreJugador() {
         return nombreJugador;
     }
     
+    /**
+     * Mapea el dungeon leyendo muros y monstruos desde archivo.
+     */
     private void mapearDungeon() {
         this.muros = lector.leerMapa();
         this.creatures = lector.leerMonstruos(this);
@@ -117,7 +158,6 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
      * @return caballero creado.
      */
     
-
     public Knight createKnight (int x, int y, String type, Dungeon dungeon){
         Knight knight = null;
         if (type.equals("Assasin")){
@@ -161,7 +201,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
                     weapon.draw(g);
                 }
         }
-         
+        
         
         for (Wall muro : getMuros()){
             g.setColor(muro.getColor());
@@ -174,7 +214,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         if(getCreatures() != null){
         for (Monster monstruo : getCreatures()) {
             monstruo.draw(g);
-          
+        
             if (!monsterThreadIsRunning(monstruo)) {
                 monstruo.setDungeon(this);
                 MonsterThread thread = new MonsterThread(this, monstruo);
@@ -198,22 +238,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         drawScore(g);
     }
     
-    private void drawLife(Graphics g){
-        if (arthur.getHealth() > 0){
-            int[] pos = {10, 770};
-            String lifeToString = Integer.toString(arthur.getHealth());
-            for (int i = 0; i < lifeToString.length(); i++) {
-                int digit = Integer.parseInt(lifeToString.substring(i, i + 1));
-                g.drawImage(Assets.numbers(digit), pos[0], pos[1], null);
-                pos[0] = pos[0] + 20;
-            }  
-        }
-        verificarPerder(llamado);
-    }
-    
     /**
-     * Dibuja el score que lleva el personaje en el nivel.
-     * @param g
+     * Dibuja el score (puntaje) actual del jugador en pantalla.
+     * Si el score es negativo, incrementa el contador de llamados y verifica si el jugador ha perdido.
+     * @param g Objeto Graphics donde se dibuja el puntaje.
      */
     public void drawScore(Graphics g){
         if (score >= 0){
@@ -232,8 +260,11 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     }
 
     /**
-     *  
-     * @param key
+     * Maneja la acción del caballero (Knight) según la tecla presionada.
+     * Si se presiona 'Q', guarda el puntaje y regresa al menú principal.
+     * Si se presiona 'ESC', alterna el estado de pausa.
+     * Si el juego está activo y no en pausa, procesa los movimientos y acciones del caballero.
+     * @param key Código de la tecla presionada.
      */
     
     public void actKnight(int key) {
@@ -267,6 +298,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
             drawable.redraw();
         }
     }
+
+    /**
+     * Detiene todos los hilos de monstruos activos en la lista monsterThreads.
+     */
     public void detenerHilos() {
         for (MonsterThread hilo : monsterThreads) {
             hilo.detener(); // llama al método que apaga el scheduler
@@ -274,6 +309,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         monsterThreads.clear();
     }
 
+    /**
+     * Verifica si el jugador ha perdido y muestra la pantalla de Game Over si corresponde.
+     * @param llamado Número de llamadas para evitar múltiples triggers
+     */
     public void verificarPerder(int llamado) {
         if (arthur.getHealth() <= 0 && llamado == 1) {
             this.active = false;
@@ -291,6 +330,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         }
     }
 
+    /**
+     * Verifica si el jugador ha ganado el nivel y muestra la pantalla de LevelCompleted si corresponde.
+     * @param llamado Número de llamadas para evitar múltiples triggers
+     */
     public void verificarVictoria(int llamado) {
         if (this.creatures.isEmpty() && llamado == 1) {
             this.isPaused = true;
@@ -303,6 +346,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
             if (frame != null) frame.dispose();
         }
     }
+
+    /**
+     * Detiene todos los hilos de monstruos activos usando ThreadGroup.
+     */
     public void detenerHilosMonstruos() {
         ThreadGroup group = Thread.currentThread().getThreadGroup();
         Thread[] threads = new Thread[group.activeCount()];
@@ -341,9 +388,9 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     @Override
     public boolean isValid(Sprite sprite) {
         if(sprite.getX() < this.getX() |
-           sprite.getY() < this.getY() |
-           sprite.getX()+sprite.getWidth() > this.getX()+this.getWidth() |
-           sprite.getY()+sprite.getHeight() > this.getY()+this.getHeight())
+            sprite.getY() < this.getY() |
+            sprite.getX()+sprite.getWidth() > this.getX()+this.getWidth() |
+            sprite.getY()+sprite.getHeight() > this.getY()+this.getHeight())
             return false;
 
         return true;
@@ -362,16 +409,25 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
                     eliminarCreature(index);
                 }
             }
+            posicion++;
         }
     }
 
+    /**
+     * Elimina una criatura del ArrayList creatures por índice.
+     * @param index Índice de la criatura a eliminar.
+     */
     public void eliminarCreature(int index){
         this.getCreatures().remove(index);
     }
-    
+
+    /**
+     * Elimina una criatura del ArrayList creatures por referencia.
+     * @param creature Instancia de LivingBeing a eliminar.
+     */
     public void eliminarCreature(LivingBeing creature) {
-    creatures.remove(creature);
-}
+        creatures.remove(creature);
+    }
     /**
      * @return the arthur
      */
@@ -429,25 +485,49 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     public boolean isActive() {
         return active;
     }
+    /**
+     * Retorna el nombre del nivel actual.
+     * @return El nombre del nivel.
+     */
     public String getNivel() {
         return this.nivel;
     }
 
+    /**
+     * Retorna el tipo de caballero seleccionado.
+     * @return El tipo de caballero.
+     */
     public String getTipo() {
         return this.tipo;
     }
+    /**
+     * Cambia el estado activo del dungeon.
+     * @param active true para activar, false para desactivar.
+     */
     public void setActive(boolean active) {
         this.active = active;
     }
-    private Game game;
 
+    /**
+     * Asocia la instancia de Game a este dungeon.
+     * @param game Instancia de Game.
+     */
     public void setGame(Game game) {
         this.game = game;
     }
+
+    /**
+     * Indica si el juego está actualmente en pausa.
+     * @return true si está en pausa, false en caso contrario.
+     */
     public synchronized boolean isPaused() {
         return isPaused;
     }
 
+    /**
+     * Cambia el estado de pausa del juego.
+     * @param estado true para pausar, false para reanudar.
+     */
     public synchronized void setPaused(boolean estado) {
         isPaused = estado;
     }
