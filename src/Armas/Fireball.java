@@ -96,15 +96,15 @@ public class Fireball extends Weapon implements Drawable{
      * @param g El objeto Graphics en el que se dibuja la bola de fuego.
      */
     @Override
-    public void draw(Graphics g) {
-        ImageIcon image = new ImageIcon(getPath());
-        if (image != null) {
-            g.drawImage(image.getImage(), x, y,null);
-        } else {
-            g.setColor(color);
-            g.fillRect(x, y, width, height);
-        }
+public void draw(Graphics g) {
+    try {
+        ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource(getPath()));
+        g.drawImage(image.getImage(), x, y, null);
+    } catch (Exception e) {
+        g.setColor(color);
+        g.fillRect(x, y, width, height);
     }
+}
     
     
 

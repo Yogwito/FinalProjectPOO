@@ -35,7 +35,7 @@ public class Giant extends Monster{
      * @param dungeon El calabozo en el que se encuentra el Giant.
      */
     public Giant(int x, int y, Dungeon dungeon) {
-        super(x, y, WIDTH, HEIGHT, 1000, 20, 10, 1, new ImageIcon("Giant.png"), dungeon);
+        super(x, y, WIDTH, HEIGHT, 800, 20, 10, 1, new ImageIcon("Giant.png"), dungeon);
     }
 
     /**

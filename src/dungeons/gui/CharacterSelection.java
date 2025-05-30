@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-
+import dungeons.gui.DungeonPanel;
 /**
  * Esta clase representa la selección de personajes en una interfaz de usuario de un juego.
  * @author Juan Sebastian Arias
@@ -288,18 +288,14 @@ public class CharacterSelection extends javax.swing.JFrame {
     }//GEN-LAST:event_magicianActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Dungeon map = new Dungeon(0, 0, 700, 800, getKnight(),level );
-        Game gameMap = new Game(map);
-        map.setDrawable(gameMap);
-        gameMap.setSize(700, 800);
-        gameMap.setVisible(true); 
-        try {
-            PlayerSoundPrincipal player = new PlayerSoundPrincipal("Medievalmusic.wav");
-            new Thread(player).start();
-        } catch (IOException ex) {
-            Logger.getLogger(CharacterSelection.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
+        Dungeon map = new Dungeon(0, 0, 700, 800, getKnight(), level);
+    Game gameMap = new Game(map);
+    DungeonPanel dungeonPanel = new DungeonPanel(map);
+    map.setDrawable(dungeonPanel);
+    gameMap.setContentPane(dungeonPanel);
+    gameMap.setSize(700, 800);
+    gameMap.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

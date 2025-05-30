@@ -36,7 +36,7 @@ public class Harpy extends Monster{
      * @param dungeon  El calabozo en el que se encuentra el Harpy.
      */
     public Harpy(int x, int y, Dungeon dungeon) {
-        super(x, y, WIDTH, HEIGHT, 500, 15, 12, 4, new ImageIcon("Harpy.png"), dungeon);
+        super(x, y, WIDTH, HEIGHT, 250, 15, 12, 4, new ImageIcon("Harpy.png"), dungeon);
     }
 
     /**

@@ -52,7 +52,7 @@ public class Magician extends Knight{
     
     switch (getAtaqueDireccion()) {
       case 0 -> {
-        Fireball fireball = new Fireball(x+(width/2),(y-17),getDungeon(), "Fireball.png");
+        Fireball fireball = new Fireball(x+(width/2), (y-17), getDungeon(), "Fireball1.png");
         fireball.setDrawable(this.getDrawable());
         getFireballs().add(fireball);
         while (fireball.isInRange()) {
@@ -77,7 +77,7 @@ public class Magician extends Knight{
         getFireballs().remove(fireball);
       }
       case 1 -> {
-        Fireball fireball = new Fireball(x+(width/2), (y+height),getDungeon(), "Fireball.png");
+        Fireball fireball = new Fireball(x+(width/2), (y+height), getDungeon(), "Fireball1.png");
         fireball.setDrawable(this.getDrawable());
         getFireballs().add(fireball);
         while (fireball.isInRange()) {
@@ -100,7 +100,7 @@ public class Magician extends Knight{
         getFireballs().remove(fireball);
       }
       case 2 -> {
-        Fireball fireball = new Fireball((x-9), y+(height/2), getDungeon(), "Fireball.png");
+        Fireball fireball = new Fireball((x-9), y+(height/2), getDungeon(), "Fireball1.png");
         fireball.setDrawable(this.getDrawable());
         getFireballs().add(fireball);
         while (fireball.isInRange()) {
@@ -123,7 +123,7 @@ public class Magician extends Knight{
         getFireballs().remove(fireball);
       }
       case 3 -> {
-        Fireball fireball = new Fireball((x+width), y+(height/2), getDungeon(), "Fireball.png");
+        Fireball fireball = new Fireball((x+width), y+(height/2), getDungeon(), "Fireball1.png");
         fireball.setDrawable(this.getDrawable());
         getFireballs().add(fireball);
         while (fireball.isInRange()) {

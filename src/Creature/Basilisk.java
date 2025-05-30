@@ -37,7 +37,7 @@ public class Basilisk extends Monster{
      * @param dungeon  El calabozo en el que se encuentra el Basilisk.
      */
     public Basilisk(int x, int y, Dungeon dungeon) {
-        super(x, y, WIDTH, HEIGHT, 400, 5, 10, 2, new ImageIcon("Basilisk.png"), dungeon);
+        super(x, y, WIDTH, HEIGHT, 200, 5, 10, 2, new ImageIcon("Basilisk.png"), dungeon);
     }
 
     /**

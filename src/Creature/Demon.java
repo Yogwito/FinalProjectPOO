@@ -37,7 +37,7 @@ public class Demon extends Monster{
      * @param dungeon  El calabozo en el que se encuentra el Demon.
      */
     public Demon(int x, int y, Dungeon dungeon) {
-        super(x, y, WIDTH, HEIGHT, 500, 10, 10, 3, new ImageIcon("Demon.png"), dungeon);
+        super(x, y, WIDTH, HEIGHT, 300, 10, 10, 3, new ImageIcon("Demon.png"), dungeon);
     }
 
     /**

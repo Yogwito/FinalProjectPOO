@@ -22,6 +22,9 @@ public class Game extends javax.swing.JFrame implements Drawable {
      * El mapa del juego
      */
     private final Dungeon map;
+    
+    
+    private DungeonPanel dungeonPanel;
 
     /**
      *  La imagen fuera de pantalla utilizada para el doble buffering
