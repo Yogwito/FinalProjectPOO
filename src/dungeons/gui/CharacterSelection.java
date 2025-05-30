@@ -289,13 +289,15 @@ public class CharacterSelection extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        Dungeon map = new Dungeon(0, 0, 700, 800, getKnight(), level);
+    Dungeon map = new Dungeon(0, 0, 700, 800, getKnight(), level);
     Game gameMap = new Game(map);
     DungeonPanel dungeonPanel = new DungeonPanel(map);
     map.setDrawable((Drawable) dungeonPanel);
     gameMap.setContentPane(dungeonPanel);
     gameMap.setSize(700, 800);
     gameMap.setVisible(true);
+    this.setVisible(false);
+    this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

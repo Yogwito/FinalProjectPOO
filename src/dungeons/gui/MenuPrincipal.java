@@ -113,6 +113,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         frame.setContentPane(levelselection);
         frame.pack();
         frame.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jbStartActionPerformed
 
     private void jbQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbQuitActionPerformed

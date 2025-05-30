@@ -1,6 +1,7 @@
 package dungeons.gui;
 
 import Class.Dungeon;
+import javax.swing.JFrame;
 
 /**
  *
@@ -157,15 +158,21 @@ public class Levels extends javax.swing.JPanel {
         selection.setVisible(true);
         setKnight(selection.getKnight());
         selection.setLevel("MapaPruebas.txt");
+        
+        JFrame frame = (JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.dispose();
     }//GEN-LAST:event_Level1jButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:  private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {               
         MenuPrincipal menu = new MenuPrincipal();
         menu.setType(getKnight());
         menu.setSize(587, 492);
         menu.setVisible(true);
         this.setVisible(false);
+        
+        JFrame frame = (JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Level2jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level2jButtonActionPerformed
@@ -173,6 +180,9 @@ public class Levels extends javax.swing.JPanel {
         CharacterSelection selection = new CharacterSelection();
         selection.setVisible(true);
         selection.setLevel("Level2.txt");
+        
+        JFrame frame = (JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.dispose();
     }//GEN-LAST:event_Level2jButtonActionPerformed
 
     private void Level3jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level3jButtonActionPerformed
@@ -180,6 +190,9 @@ public class Levels extends javax.swing.JPanel {
         CharacterSelection selection = new CharacterSelection();
         selection.setVisible(true);
         selection.setLevel("Level3.txt");
+        
+        JFrame frame = (JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.dispose();
     }//GEN-LAST:event_Level3jButtonActionPerformed
 
     private void Level4jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level4jButtonActionPerformed
@@ -187,6 +200,9 @@ public class Levels extends javax.swing.JPanel {
         CharacterSelection selection = new CharacterSelection();
         selection.setVisible(true);
         selection.setLevel("Level4.txt");
+        
+        JFrame frame = (JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.dispose();
     }//GEN-LAST:event_Level4jButtonActionPerformed
 
     private void LevelfinaljButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LevelfinaljButtonActionPerformed
@@ -194,6 +210,9 @@ public class Levels extends javax.swing.JPanel {
         CharacterSelection selection = new CharacterSelection();
         selection.setVisible(true);
         selection.setLevel("Level5.txt");
+        
+        JFrame frame = (JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.dispose();
     }//GEN-LAST:event_LevelfinaljButtonActionPerformed
 
 

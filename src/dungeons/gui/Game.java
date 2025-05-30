@@ -177,7 +177,6 @@ public class Game extends javax.swing.JFrame implements Drawable {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         if (!map.isActive()) return;  // Si el mapa está inactivo, no hacer nada
         map.actKnight(evt.getKeyCode());
-        System.out.println("Tecla: " + evt.getKeyCode());
     }//GEN-LAST:event_formKeyPressed
 
     /**

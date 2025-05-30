@@ -49,6 +49,7 @@ public class MonsterThread extends Thread {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
         scheduler.scheduleAtFixedRate(() -> {
+            if (dungeon.isPaused()) return;
             getMonster().moveCreature(dungeon, dungeon.getMuros(), dungeon.getCreatures(), dungeon.getArthur());
             
             if(getMonster() instanceof Dragon){

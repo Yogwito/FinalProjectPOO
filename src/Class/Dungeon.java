@@ -28,6 +28,7 @@ import javax.swing.ImageIcon;
 import java.util.Timer;
 import java.util.TimerTask;
 import dungeons.gui.MenuPrincipal;
+import javax.swing.JFrame;
 
 /**
  * Clase que representa el mapa del juego que contiene los muros y creaturas.
@@ -50,6 +51,8 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private int llamado;
     private String tipo;
     private String nombreJugador;
+    private boolean isPaused = false;
+
     
 
     /**
@@ -230,39 +233,64 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
      */
     
     public void actKnight(int key) {
-        if (!active) return; 
-
-        if (key == KeyEvent.VK_ESCAPE || key == KeyEvent.VK_Q) {
+        if (key == KeyEvent.VK_Q) {
             this.active = false;
             RegistroPartida registro = new RegistroPartida();
             registro.guardar(nombreJugador, score);
+
+            JFrame frame = (JFrame) javax.swing.SwingUtilities.getWindowAncestor((java.awt.Component) drawable);
+            if (frame != null) frame.dispose();
+
             new MenuPrincipal().setVisible(true);
             return;
         }
 
-        if (key == KeyEvent.VK_W || key == KeyEvent.VK_S || key == KeyEvent.VK_A || key == KeyEvent.VK_D || key == KeyEvent.VK_SPACE) {
+        // ESC = alternar pausa
+        if (key == KeyEvent.VK_ESCAPE) {
+            isPaused = !isPaused;
+            System.out.println(isPaused ? "⏸️ Juego pausado" : "▶️ Juego reanudado");
+            return;
+        }
+
+        // Si está pausado o no activo, ignorar todo
+        if (isPaused || !active) return;
+
+        // Acciones normales
+        if (key == KeyEvent.VK_W || key == KeyEvent.VK_S ||
+            key == KeyEvent.VK_A || key == KeyEvent.VK_D ||
+            key == KeyEvent.VK_SPACE) {
             arthur.actionHandle(key, muros, creatures);
             drawable.redraw();
         }
     }
+
+
     public void verificarPerder(int llamado){
         if (arthur.getHealth() <= 0 && llamado == 1) {
             this.active = false;
             this.score = 0;
+            
+            JFrame frame = (JFrame) javax.swing.SwingUtilities.getWindowAncestor((java.awt.Component) drawable);
+            if (frame != null) frame.dispose();
+
             GameOver go = new GameOver(null, true, nivel, arthur.getClass().getSimpleName(), nombreJugador);
             go.setVisible(true);
         }
     }
 
     
-    public void verificarVictoria(int llamado){
-        if(this.creatures.isEmpty() && llamado == 1){
+    public void verificarVictoria(int llamado) {
+        if (this.creatures.isEmpty() && llamado == 1) {
             LevelCompleted lc = new LevelCompleted(null, true);
             lc.setScore(String.valueOf(this.score));
             lc.setVisible(true);
             this.active = false;
+
+            JFrame frame = (JFrame) javax.swing.SwingUtilities.getWindowAncestor((java.awt.Component) drawable);
+            if (frame != null) frame.dispose();
         }
     }
+
     
     /**
      * Redibuja el mapa
@@ -387,5 +415,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     public void setGame(Game game) {
         this.game = game;
     }
-
+    public synchronized boolean isPaused() {
+        return isPaused;
+    }
 }
