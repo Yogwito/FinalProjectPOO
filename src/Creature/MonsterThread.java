@@ -26,6 +26,11 @@ public class MonsterThread extends Thread {
      * El monstruo que este hilo está manejando.
      */
     private final Monster monster;
+    
+    private ScheduledExecutorService scheduler;
+    
+    private volatile boolean enEjecucion = true;
+
 
     /**
      * Constructor de la clase MonsterThread.
@@ -46,28 +51,34 @@ public class MonsterThread extends Thread {
      */
     @Override
     public void run() {
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        scheduler = Executors.newScheduledThreadPool(1);
 
         scheduler.scheduleAtFixedRate(() -> {
-            if (dungeon.isPaused()) return;
-            getMonster().moveCreature(dungeon, dungeon.getMuros(), dungeon.getCreatures(), dungeon.getArthur());
-            
-            if(getMonster() instanceof Dragon){
-                getMonster().attack();
+            if (!enEjecucion || dungeon.isPaused()) return;
+
+            monster.moveCreature(dungeon, dungeon.getMuros(), dungeon.getCreatures(), dungeon.getArthur());
+
+            if (monster instanceof Dragon) {
+                monster.attack();
                 try {
-                    // Agregar un retraso de 100 milisegundos (ajusta según sea necesario)
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
 
-            if (getMonster().checkCollision(dungeon.getArthur())) {
-                getMonster().attack();
+            if (monster.checkCollision(dungeon.getArthur())) {
+                monster.attack();
             }
 
             dungeon.getDrawable().redraw();
-        }, 0, 1, TimeUnit.SECONDS); // Ajustado el intervalo a 5 segundos
+        }, 0, 1, TimeUnit.SECONDS);
+    }
+
+    public void detener() {
+        if (scheduler != null && !scheduler.isShutdown()) {
+            scheduler.shutdownNow(); // <- Detiene el hilo
+        }
     }
 
     /**
@@ -77,5 +88,6 @@ public class MonsterThread extends Thread {
     public Monster getMonster() {
         return monster;
     }
-    
+
+
 }

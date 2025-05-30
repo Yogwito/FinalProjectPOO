@@ -52,6 +52,8 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private String tipo;
     private String nombreJugador;
     private boolean isPaused = false;
+    private ArrayList<MonsterThread> monsterThreads = new ArrayList<>();
+
 
     
 
@@ -177,6 +179,8 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
                 monstruo.setDungeon(this);
                 MonsterThread thread = new MonsterThread(this, monstruo);
                 thread.start();
+                monsterThreads.add(thread);
+
             }
             
         }
@@ -263,24 +267,33 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
             drawable.redraw();
         }
     }
+    public void detenerHilos() {
+        for (MonsterThread hilo : monsterThreads) {
+            hilo.detener(); // llama al método que apaga el scheduler
+        }
+        monsterThreads.clear();
+    }
 
-
-    public void verificarPerder(int llamado){
+    public void verificarPerder(int llamado) {
         if (arthur.getHealth() <= 0 && llamado == 1) {
             this.active = false;
+            this.isPaused = true;
             this.score = 0;
-            
-            JFrame frame = (JFrame) javax.swing.SwingUtilities.getWindowAncestor((java.awt.Component) drawable);
-            if (frame != null) frame.dispose();
 
-            GameOver go = new GameOver(null, true, nivel, arthur.getClass().getSimpleName(), nombreJugador);
+            this.detenerHilos();
+
+            // Cerramos la ventana del juego
+            if (game != null) game.dispose();
+
+            // Ahora sí mostramos GameOver
+            GameOver go = new GameOver(null, true, nivel, arthur.getClass().getSimpleName(), nombreJugador, null);
             go.setVisible(true);
         }
     }
 
-    
     public void verificarVictoria(int llamado) {
         if (this.creatures.isEmpty() && llamado == 1) {
+            this.isPaused = true;
             LevelCompleted lc = new LevelCompleted(null, true);
             lc.setScore(String.valueOf(this.score));
             lc.setVisible(true);
@@ -290,6 +303,18 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
             if (frame != null) frame.dispose();
         }
     }
+    public void detenerHilosMonstruos() {
+        ThreadGroup group = Thread.currentThread().getThreadGroup();
+        Thread[] threads = new Thread[group.activeCount()];
+        group.enumerate(threads, true);
+
+        for (Thread thread : threads) {
+            if (thread instanceof MonsterThread) {
+                ((MonsterThread) thread).detener(); // ← Llama al nuevo método
+            }
+        }
+    }
+
 
     
     /**
@@ -418,4 +443,9 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     public synchronized boolean isPaused() {
         return isPaused;
     }
+
+    public synchronized void setPaused(boolean estado) {
+        isPaused = estado;
+    }
+
 }

@@ -5,6 +5,7 @@
 package dungeons.gui;
 
 import Class.RegistroPartida;
+import Exception.NombreVacioException;
 import javax.swing.ImageIcon;
 
 /**
@@ -189,12 +190,20 @@ public class LevelCompleted extends javax.swing.JDialog {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
-        String nombre = jtNombre.getText();
-        int puntaje = Integer.parseInt(jTextField1.getText());
+        try {
+            String nombre = jtNombre.getText();
+            if (nombre == null || nombre.trim().isEmpty()) {
+                throw new NombreVacioException("No se puede guardar el puntaje sin un nombre.");
+            }
 
-        RegistroPartida registro = new RegistroPartida();
-        registro.guardar(nombre, puntaje);
+            int puntaje = Integer.parseInt(jTextField1.getText());
 
+            RegistroPartida registro = new RegistroPartida();
+            registro.guardar(nombre, puntaje);
+
+        } catch (NombreVacioException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreActionPerformed

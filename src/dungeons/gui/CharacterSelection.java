@@ -1,11 +1,13 @@
 package dungeons.gui;
 
 import Class.Dungeon;
+import Exception.NoCharacterSelectedException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import dungeons.gui.DungeonPanel;
+import javax.swing.JOptionPane;
 /**
  * Esta clase representa la selección de personajes en una interfaz de usuario de un juego.
  * @author Juan Sebastian Arias
@@ -288,16 +290,24 @@ public class CharacterSelection extends javax.swing.JFrame {
     }//GEN-LAST:event_magicianActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        try {
+            if (this.knight == null || this.knight.isEmpty()) {
+                throw new NoCharacterSelectedException("No se puede iniciar si no hay ningún personaje seleccionado");
+            }
         
-    Dungeon map = new Dungeon(0, 0, 700, 800, getKnight(), level);
-    Game gameMap = new Game(map);
-    DungeonPanel dungeonPanel = new DungeonPanel(map);
-    map.setDrawable((Drawable) dungeonPanel);
-    gameMap.setContentPane(dungeonPanel);
-    gameMap.setSize(700, 800);
-    gameMap.setVisible(true);
-    this.setVisible(false);
-    this.dispose();
+        Dungeon map = new Dungeon(0, 0, 700, 800, getKnight(), level);
+        Game gameMap = new Game(map);
+        DungeonPanel dungeonPanel = new DungeonPanel(map);
+        map.setDrawable((Drawable) dungeonPanel);
+        gameMap.setContentPane(dungeonPanel);
+        gameMap.setSize(700, 800);
+        gameMap.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+        } catch (NoCharacterSelectedException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

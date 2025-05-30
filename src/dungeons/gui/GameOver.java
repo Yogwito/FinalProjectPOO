@@ -22,22 +22,32 @@ public class GameOver extends javax.swing.JDialog {
     private String nivel;
     private String tipo;
     private String nombreJugador;
+    private Game juegoAnterior;
+
 
     /**
      * Creates new form GameOver
      */
-    public GameOver(java.awt.Frame parent, boolean modal,String nivel, 
-            String tipo, String nombreJugador) {
+    public GameOver(java.awt.Frame parent, boolean modal, String nivel, String tipo, String nombreJugador, Game juegoAnterior) {
+        super(parent, modal);
+        
+        initComponents();
         this.nivel = nivel;
         this.tipo = tipo;
         this.nombreJugador = nombreJugador;
-        initComponents();
+        this.juegoAnterior = juegoAnterior;
+
         jLabel2.setIcon(new ImageIcon(getClass().getResource("/Img/Gameover.png")));
-        
+
         RegistroPartida registro = new RegistroPartida();
         int puntajeFinal = 0;
         registro.guardar(nombreJugador, puntajeFinal);
     }
+
+    public GameOver(java.awt.Frame parent, boolean modal, String nivel, String tipo, String nombreJugador) {
+        this(parent, modal, nivel, tipo, nombreJugador, null);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,17 +111,25 @@ public class GameOver extends javax.swing.JDialog {
 
     private void jButtonReintentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReintentarActionPerformed
         // TODO add your handling code here:
-        
-        Dungeon dungeon = new Dungeon(0, 0, 800, 800, tipo, nivel, nombreJugador);
-        Game nuevaPartida = new Game(dungeon);
-        dungeon.setDrawable(nuevaPartida); // ← Esto evita el error de drawable null
+        java.awt.Window[] windows = java.awt.Window.getWindows();
+        for (java.awt.Window w : windows) {
+            if (w instanceof Game) {
+                w.dispose();
+            }
+        }
+
+        // Crea la nueva partida
+        Dungeon nuevoMapa = new Dungeon(0, 0, 800, 800, tipo, nivel, nombreJugador);
+        Game nuevaPartida = new Game(nuevoMapa);
         nuevaPartida.setTitle("Scavenger Hunt");
-        nuevaPartida.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        nuevaPartida.setSize(800, 850);
+        nuevaPartida.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        nuevaPartida.setSize(800, 850); 
         nuevaPartida.setLocationRelativeTo(null);
         nuevaPartida.setVisible(true);
-        nuevaPartida.requestFocus(); // Asegura que reciba eventos del teclado
-        dispose(); // Cierra la ventana GameOver
+        nuevaPartida.requestFocus(); // Recibe eventos de teclado
+
+        // Cierra la ventana actual de GameOver
+        dispose();
 
     }//GEN-LAST:event_jButtonReintentarActionPerformed
 
@@ -145,7 +163,7 @@ public class GameOver extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GameOver dialog = new GameOver(new javax.swing.JFrame(), true, "nivel1", "facil", "JugadorPrueba");
+                GameOver dialog = new GameOver(new javax.swing.JFrame(), true, "nivel", "tipo", null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
