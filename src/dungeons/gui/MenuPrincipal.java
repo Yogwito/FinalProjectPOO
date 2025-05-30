@@ -5,6 +5,7 @@
 package dungeons.gui;
 
 import javax.swing.JFrame;
+import java.io.IOException;
 
 /**
  *
@@ -21,6 +22,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
+        try {
+    PlayerSoundPrincipal musica = new PlayerSoundPrincipal("Medievalmusic.wav");
+    Thread hiloMusica = new Thread(musica);
+    hiloMusica.start();
+    } catch (IOException ex) {
+    ex.printStackTrace(); // Muestra si el archivo no se encuentra
+}
     }
 
     /**
