@@ -16,7 +16,7 @@ public interface Reader {
     /**
      * Lee el contenido de un archivo y lo devuelve como una lista de cadenas.
      * @param filePath Ruta del archivo a leer.
-     * @return Lista de líneas leídas del archivo.
+     * @return Lista de líneas leídas deel archivo.
      */
     ArrayList<String> read(String filePath);
 }
