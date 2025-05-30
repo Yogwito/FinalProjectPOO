@@ -260,6 +260,7 @@ public abstract class LivingBeing extends Sprite{
 
     public void morir() {
         // Este método se puede sobrescribir en Knight o Monster si necesitas acciones específicas
+        dungeon.eliminarCreature(this);
     }
 
 

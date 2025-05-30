@@ -230,9 +230,15 @@ public class Knight extends LivingBeing{
     * @param arma Espada del caballero.
     * @return 0 (este método aún no está implementado).
     */
-    public int verificarAtaque(ArrayList<Monster> creatures, Weapon arma){
-        return 0;
+    public int verificarAtaque(ArrayList<Monster> creatures, Weapon arma) {
+    for (Monster m : creatures) {
+        if (arma.checkCollision(m)) {
+            m.recibirDano(this.damage); // aplica daño según el atributo del Knight
+            return 1; // golpe exitoso
+        }
     }
+    return 0; // no hubo colisión
+}
 
     /**
     * Obtiene la dirección de ataque del caballero.
