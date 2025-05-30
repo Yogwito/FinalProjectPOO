@@ -31,7 +31,7 @@ public class SwordMan extends Knight{
      * @param dungeon  El calabozo en el que se encuentra el Swordman.
      */
     public SwordMan(int x, int y, Dungeon dungeon) {
-        super(x, y, 22, 25, 100, 62, 60, 8,new ImageIcon("SwordmanCharacter.png"), dungeon);
+        super(x, y, 22, 25, 100, 52, 30, 8,new ImageIcon("SwordmanCharacter.png"), dungeon);
     }
 
     /**

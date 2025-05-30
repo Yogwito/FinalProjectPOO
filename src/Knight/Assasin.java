@@ -31,7 +31,7 @@ public class Assasin extends Knight{
      * @param dungeon  El calabozo en el que se encuentra el Assasin.
      */
      public Assasin(int x, int y, Dungeon dungeon) {
-        super(x, y,20,28, 100, 175, 10, 10 , new ImageIcon("AssasinCharacter.png"), dungeon);
+        super(x, y,20,28, 100, 75, 6, 10 , new ImageIcon("AssasinCharacter.png"), dungeon);
     }
 
     /**

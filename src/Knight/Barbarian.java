@@ -31,7 +31,7 @@ public class Barbarian extends Knight{
      * @param dungeon  El calabozo en el que se encuentra el Barbarian.
      */
     public Barbarian(int x, int y, Dungeon dungeon) {
-        super(x, y, 20, 30, 120, 100, 20, 5, new ImageIcon("BarbarianCharacter.png"), dungeon);
+        super(x, y, 20, 30, 120, 70, 17, 5, new ImageIcon("BarbarianCharacter.png"), dungeon);
     }
     
     /**
