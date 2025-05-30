@@ -51,7 +51,7 @@ public class PlayerSoundPrincipal extends PlayerSound implements Runnable{
                 try {
                     getClip().setFramePosition(0);
                     getClip().start();
-                    Thread.sleep(21800);
+                    Thread.sleep(180000);
                 } catch (InterruptedException ex) {
                     System.out.println("Error al pausar");
                 }

@@ -31,7 +31,7 @@ public class Tank extends Knight{
      * @param dungeon  El calabozo en el que se encuentra el Tank.
      */
     public Tank(int x, int y, Dungeon dungeon) {
-        super(x, y, 20, 30, 150, 40, 8, 3,new ImageIcon("TankCharacter1.png"), dungeon);
+        super(x, y, 20, 30, 1000000, 400, 8, 3,new ImageIcon("TankCharacter1.png"), dungeon);
     }
 
     /**
